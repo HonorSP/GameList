@@ -30,7 +30,7 @@ namespace GameList.Controllers
 
         public GameController(IListRepository listRepository, UserManager<AppUser> userManager)
         {
-            igdb = new IGDBClient("mglx6fger7kprdp4o25d74g9dg9ewf", "128zb34th4o2k2sdoeci8iqhq9x6wk");
+            igdb = new IGDBClient("", "");
             _listRepository = listRepository;
             _userManager = userManager;
         }

@@ -20,7 +20,7 @@ namespace GameList.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            igdb = new IGDBClient("mglx6fger7kprdp4o25d74g9dg9ewf", "128zb34th4o2k2sdoeci8iqhq9x6wk");
+            igdb = new IGDBClient("", "");
         }
         //Index: retrieves random and upcoming games information from the IGDB API, creates an IndexGameViewModel instance and passes it to the view.
         public async Task<IActionResult> Index()
