@@ -1,0 +1,321 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@using GameList.ViewModels
+@model UserGameListViewModel
+@{
+    Layout = null;
+    var currentUser = await UserManager.GetUserAsync(User);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(Model.DisplayName ?? "User")'s   GameList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/usergamelist.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GameList.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="/img/logoicon.png">
+
+<style>
+ body {
+     background-color: @Model.BgColorBody;
+ }
+
+ .bgColorDisplay{
+    background-color: @Model.BgColorDisplay;
+}
+
+.fontColorDisplayName{
+    color: @Model.FontColorDisplayName;
+}
+
+.bgColorGameListLogo {
+    background-color: @Model.BgColorGameListLogo;
+}
+.bgColorStatusButtonActive{
+    background-color: @Model.BgColorStatusButtonActive;
+}
+.bgColorStatusButton{
+    background-color: @Model.BgColorStatusButton;
+}
+
+.fontColorStatusButton{
+    color: @Model.FontColorStatusButton ;
+}
+.bgColorStatus{
+            background-color: @Model.BgColorStatus;
+}
+
+.bgColorSearch{
+    background-color: @Model.BgColorSearch;
+}
+.fontColorSearch{
+            color: @Model.FontColorSearch;
+}
+.fontColorSearch::placeholder{
+                color: @Model.FontColorSearch;
+}
+
+.bgColorTable{
+    background-color: @Model.BgColorTable;
+}
+.fontColorTable{
+    color: @Model.FontColorTable;
+}
+
+.bgColorGameTile{
+    background-color: @Model.BgColorGameTile;
+}
+ .bgColorGamename {
+    background-color: @Model.BgColorGamename;
+ }
+.fontColorGamename{
+    color: @Model.FontColorGamename;
+}
+.bgColorFooter{
+   background-color: @Model.BgColorFooter;
+}
+</style>
+</head>
+<body>
+    <div class="container-fluid px-4 pb-5" style="margin-top:50px">
+        <div class="row gx-1 justify-content-center">
+            <div class="col-xl-7">
+
+                <div class=" bgColorDisplay gamelistEditUserGameList p-1 pt-5 pb-5">
+
+                    <div class="d-flex justify-content-center pb-2">
+                        <p class="display-6 fw-bold bgColorDisplay fontColorDisplayName">@(Model.DisplayName ?? "User")'s </p>
+                       
+                    </div> 
+                    <div class="d-flex justify-content-center">
+                        <div class="p-3 bgColorGameListLogo gameListTitleBackground">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logosvg.svg" style="width:207px;height:45px;"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                    <div style=" margin-top:2px;" class="bgColorStatus fontColorStatusButton">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-xxl-2 mt-2 mb-2 text-decoration-none" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" class="nav-link @(Model.Status == 0 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ")">
+                                    <p class=" fw-bold fs-6 text-center mb-0" style="text-decoration:none;">All Games</p>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" asp-route-status="1" class="text-decoration-none nav-link @(Model.Status == 1 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ")">
+                                    <p class=" fw-bold fs-6 text-center mb-0">Playing</p>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" asp-route-status="2" class=" nav-link @(Model.Status == 2 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ")">
+                                    <p class=" fw-bold fs-6 text-center mb-0">Completed</p>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" asp-route-status="3" class="text-decoration-none nav-link @(Model.Status == 3 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ")">
+                                    <p class=" fw-bold fs-6 text-center mb-0">On-Hold</p>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" asp-route-status="4" class="text-decoration-none nav-link @(Model.Status == 4 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ")">
+                                    <p class=" fw-bold fs-6 text-center mb-0">Dropped</p>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                                <a asp-controller="List" asp-action="UserGameList" asp-route-status="5" class="text-decoration-none nav-link @(Model.Status == 5 ? "statusButtonactive bgColorStatusButtonActive" : "statusButton bgColorStatusButton ") ">
+                                    <p class=" fw-bold fs-6 text-center mb-0">Plan to Play</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input class="form-control editUserGameListsearchbar bgColorSearch fontColorSearch border-0 w-100 fs-5" type="text" id="myInput" placeholder="Search..." aria-label="Search">
+                <table class="table table-borderless text-light mb-0" border=1 frame=void rules=rows style="border-spacing:0 2px;border-collapse: separate;" id="myTable">
+                    <thead>
+                        <tr  class=" bgColorTable fontColorTable">
+                            <th scope="col" class="d-none d-sm-table-cell text-center fs-6">Image</th>
+                            <th scope="col" class="text-center fs-6">
+                                <a class=" user-select-none text-decoration-none p-1" id="sortName">
+                                    Name <i class="fa fa-sort" aria-hidden="true"></i>
+                                </a>
+                            </th>
+                            <th scope="col" class="text-center fs-6">Status</th>
+                            <th scope="col" class="text-center fs-6">
+                                <a class=" user-select-none text-decoration-none p-1" id="ratingCol">
+                                    Rating <i class="fa fa-sort" aria-hidden="true"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="mySearch">
+
+                        @foreach (var userGameList in Model.UserGameLists)
+                        {
+                            <tr class="bgColorGameTile" data-rating="@userGameList.GameRating" data-name="@userGameList.GameName">
+                                <td class="align-middle d-none text-center d-sm-table-cell pt-4 pb-4">
+                                    <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@userGameList.GameId" class="text-decoration-none" >
+                                        @if (userGameList.GameImageId == null)
+                                        {
+                                            <img src="~/img/nocover.png" style="max-height:187px;width:132px;margin:0px;" class="mx-auto">
+                                        }
+                                        else
+                                        {
+                                    <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + userGameList.GameImageId + ".jpg")" style="max-height:187px;width:132px;margin:0px;" class="mx-auto">
+
+                                        }
+
+                                    </a>
+                                </td>
+                                <td class="align-middle w-50">
+                                    <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@userGameList.GameId" class="text-decoration-none">
+                                        <p class="gameNameButton bgColorGamename fontColorGamename p-2 fw-bold  fs-6 text-center mb-0">@userGameList.GameName</p>
+
+                                    </a>
+                                </td >
+                                <td class="align-middle">
+                                    @{
+                                        Tuple<string> statuses = Model.Statuses[userGameList.GameId];
+                                    }
+                                    @if (statuses.Item1 == "Select Status")
+                                    {
+
+                                        <p class="statususerlistna p-2 mx-auto text-center mb-0">N/A</p>
+                                    }
+                                    else
+                                    {
+
+                                        <p class="statususerlist p-2 mx-auto text-center mb-0">@statuses.Item1</p>
+                                    }
+                                </td>
+                                <td class="align-middle">
+                                        @if (userGameList.GameRating == 11)
+                                        {
+
+                                        <h1 class="ratinguserlistna mx-auto p-3 text-center mb-0">N/A </h1>
+                                        }
+                                        else{
+
+                                        <h1 class="ratinguserlist mx-auto p-3 text-center mb-0">@userGameList.GameRating</h1>
+                                        }
+                                    
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+                <script>
+                    $(document).ready(function () {
+                        $("#myInput").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                            $("#mySearch tr").filter(function () {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+
+                </script>
+                <script>
+                    var nameSortOrder = 'asc';
+                    var ratingSortOrder = 'asc';
+
+                    function sort_name(a, b) {
+                        var name_a = $(a).data("name").toLowerCase();
+                        var name_b = $(b).data("name").toLowerCase();
+                        if (nameSortOrder == 'asc') {
+                            return name_a.localeCompare(name_b);
+                        } else {
+                            return name_b.localeCompare(name_a);
+                        }
+                    } 
+                    
+                    function sort_rating(a, b) {
+                        var rating_a = $(a).data("rating");
+                        var rating_b = $(b).data("rating");
+                        if (rating_a === 11 && rating_b === 11) {
+                            return 0;
+                        }
+                        if (rating_a === 11) {
+                            return 1;
+                        }
+                        if (rating_b === 11) {
+                            return -1;
+                        }
+                        return (ratingSortOrder === 'asc') ? rating_a - rating_b : rating_b - rating_a;
+                    }
+
+
+
+                    $("#sortName").click(function () {
+                        $("#mySearch").find('tr').sort(sort_name).appendTo('#mySearch');
+                        if (nameSortOrder == 'asc')
+                            nameSortOrder = 'desc';
+                        else
+                            nameSortOrder = 'asc';
+                    });
+
+                    $("#ratingCol").click(function () {
+                        $("#mySearch").find('tr').sort(sort_rating).appendTo('#mySearch');
+                        if (ratingSortOrder == 'asc')
+                            ratingSortOrder = 'desc';
+                        else
+                            ratingSortOrder = 'asc';
+                    });
+
+
+                </script>
+                <div class=" bgColorFooter gamelistEditUserGameListEnd mb-5 p-1">
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameList.Controllers.AccountController" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhAAhAAAABAAIQAAQAAIABAADAEAAAAEQAAQACAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.FeedbackController" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAACAAAAAAAAIAIQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FeedbackController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.FollowController" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAoCABAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\FollowController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.GameController" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAIEAAAAAAAAAAAAACAAAAAAABAAEAAIAEAAA=</HashCode>
+      <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.HomeController" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAIAAAAQABAAEIEAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.ListController" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIBAAgAEEAAAABAICIAAAAAAAAAAAAAGAAAAAgAAA=</HashCode>
+      <FileName>Controllers\ListController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.MessageController" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAABgAIAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MessageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Controllers.UserController" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAgAkAABAAIAAAAAABAAAQAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Data.ApplicationDbContext" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQACEAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ApplicationDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Helpers.AuthMessageSenderOptions" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\AuthMessageSenderOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Helpers.CloudinarySettings" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEgAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\CloudinarySettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Migrations.InitialCreate" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230121173755_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Migrations.AddUserMessageTbl" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230123135140_AddUserMessageTbl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Migrations.AddedCustomColors" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230125205258_AddedCustomColors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Migrations.AddTimesToTables" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230131142640_AddTimesToTables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Migrations.ApplicationDbContextModelSnapshot" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\ApplicationDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Models.AppUser" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAFEggAACAAAAgKAEBIAQgCAgAoAAADAAAAAAYgAA=</HashCode>
+      <FileName>Models\AppUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Models.ErrorViewModel" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Models.UserFollow" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAAgAAAAAEAAAAAAgAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\UserFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Models.UserGameList" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAEEAAIAAAAAACAAAAAiEAAAAAA=</HashCode>
+      <FileName>Models\UserGameList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Models.UserMessage" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAJAAIAAA=</HashCode>
+      <FileName>Models\UserMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.Repository.FollowRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYgAIAAAAAABAEBAAAAAIAABAEAEAAAAAQABAAAACA=</HashCode>
+      <FileName>Repository\FollowRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.Repository.ListRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAMYAAAAAYBAAAAAAAAIAAAlEAQAAADiAAAAQAAAA=</HashCode>
+      <FileName>Repository\ListRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.Repository.MessageRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAAAAAABAAAAAAAAAAAAgEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\MessageRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.21" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.Repository.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAIAAAABAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repository\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.Services.PhotoService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Services\PhotoService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.Services.SendGridEmail" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAAAQBAAAA=</HashCode>
+      <FileName>Services\SendGridEmail.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameList.ViewModels.AddGameListViewModel" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAiEAAAAAA=</HashCode>
+      <FileName>ViewModels\AddGameListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.AdvancedCustomiseListViewModel" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABEggAACAAAAAIAABAAQgCAgAIAAABQAAAAAIgAA=</HashCode>
+      <FileName>ViewModels\AdvancedCustomiseListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.AllMessagesViewModel" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAJQAEAAA=</HashCode>
+      <FileName>ViewModels\AllMessagesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.AvailableUsersViewModel" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AvailableUsersViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.AvailableUser" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>ViewModels\AvailableUsersViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.CustomiseListViewModel" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABQAAAAAAgAA=</HashCode>
+      <FileName>ViewModels\CustomiseListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.DeleteAccountViewModel" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DeleteAccountViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.EditProfileViewModel" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAACAAAAAAAAAAAABAAAQAAAAAQAAA=</HashCode>
+      <FileName>ViewModels\EditProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.EditUserGameListViewModel" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAkAAAAABAAAABAAQAAAAAEAAAAAAIAAAABAAA=</HashCode>
+      <FileName>ViewModels\EditUserGameListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.FollowingFollowersViewModel" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\FollowingFollowersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.ForgotPasswordViewModel" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ForgotPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.GameInfoViewModel" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAAAAAAAAAAAAAAAAAAAEBAAAACICMAAAAAA=</HashCode>
+      <FileName>ViewModels\GameInfoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.GameSearchViewModel" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIgwAAEAAAAAABAABIACACAAAAQAAAAAAAAAADAo=</HashCode>
+      <FileName>ViewModels\GameSearchViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.IndexGameViewModel" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\IndexGameViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQIAAAAgAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.MessageViewModel" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\MessageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.RegisterViewModel" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQIAAgAAIAA=</HashCode>
+      <FileName>ViewModels\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.ResetPasswordViewModel" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>ViewModels\ResetPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.SearchUsersViewModel" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\SearchUsersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.SendFeedbackViewModel" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAACAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SendFeedbackViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.UserDetailViewModel" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>ViewModels\UserDetailViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.UserGameListViewModel" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAFEgkAACAAAAEIABBAQQgCAgAIAAABQIAAAAIgAA=</HashCode>
+      <FileName>ViewModels\UserGameListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.FeedItem" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAgAAAAAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>ViewModels\UserProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.UserProfileViewModel" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEiABAgAAAAAgKAgAAAIAAAAAEIAgEQEAAABQAAA=</HashCode>
+      <FileName>ViewModels\UserProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.UserViewModel" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>ViewModels\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.Welcome2ViewModel" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Welcome2ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameList.ViewModels.WelcomeViewModel" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAA=</HashCode>
+      <FileName>ViewModels\WelcomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GameList.Interfaces.IFollowRepository">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYgAIAAAAAAAAEBAAAAAIAABAEAEAAAAAQABAAAACA=</HashCode>
+      <FileName>Interfaces\IFollowRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameList.Interfaces.IListRepository">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAMYAAAAAYAAAAAAAAAIAAAlEAQAAADiAAAAQAAAA=</HashCode>
+      <FileName>Interfaces\IListRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameList.Interfaces.IMessageRepository">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMessageRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameList.Interfaces.IPhotoService">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPhotoService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameList.Interfaces.ISendGridEmail">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Interfaces\ISendGridEmail.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameList.Interfaces.IUserRepository">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

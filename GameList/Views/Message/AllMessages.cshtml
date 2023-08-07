@@ -1,0 +1,172 @@
+﻿@using GameList.ViewModels;
+@model AllMessagesViewModel
+
+<div class="container-fluid px-4">
+    <div class="row gx-1">
+        <div class="col-md-3 ">
+
+            <div class="card gameinfo1">
+                <img src="@Model.ReceiverProfilePictureUrl" class="card-img-top   mb-2" alt="...">
+                <div class="card-body pt-0 mt-0">
+                    <p class="text-center fw-bold  p-1 m-1  gameinfo1h1">@Model.ReceiverDisplayName</p>
+                    <div class="row">
+                        <div class="col-xxl-8">
+                            <p style="max-width: 200px;" class="gameinfo1h1 p-1 m-1">@String.Format("@{0}", Model.ReceiverName)</p>
+                        </div>
+                        <div class="col-xxl-4"></div>
+                    </div>
+                </div>
+
+
+            </div>
+
+              <div class="gameinfo2 gameinfo2p mt-1">
+                   
+            <div class="col-12 d-flex justify-content-center ">
+                    <a class="nav-link  messageButton fw-bolder text-center fs-3 p-1 m-1 ml-auto" style="width:200px;" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@Model.ReceiverName"><i class="fa fa-angle-double-left" aria-hidden="true"></i> <i class="fa fa-user" aria-hidden="true"></i></a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class=" gameinfo2 gameinfo2h2 p-1">
+                <h2 class="defaultTextColor">Chat</h2>
+            </div>
+
+
+
+
+
+            <div class=" gameinfo2 text-center gameinfo2p pt-1 pb-1">
+                
+        <div class="card-body text-center">
+            <form asp-action="SendMessage" asp-controller="Message" asp-route-followUserId="@Model.ReceiverId">
+                <div class="">
+                    <p class="defaultTextColor mb-4">Please enter a message!</p>
+                    <div class="form-outline form-white mb-4">
+                        <textarea asp-for="Message" class="form-control gameinfo1searchfilter gameinfo1" rows="5" style="resize:none;" id="message"></textarea>
+                        <label asp-for="Message" class="form-label" hidden>Message</label>
+                        <div class="gameinfo1searchfilter w-25  text-success mt-2" id="charCount"></div>
+                    </div>
+                    <button class="btn gameinfo1menubuttons btn-lg px-5 text-success" type="submit">Send</button>
+                    <br>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+            </form>
+
+        </div>
+
+
+            </div>
+
+
+
+            <div class=" gameinfo2 text-center gameinfo2p pt-4 pb-4">
+
+                @if (Model.Messages != null)
+                {
+                    foreach (var message in Model.Messages)
+                    {
+                        if (message.Sender.UserName == @Model.ReceiverName)
+                        {
+                            
+                        <div class="row gameinfo2">
+                                <div class="col-xl-3 ">
+                                    <p class="text-center card fw-bold p-1 m-1 mt-1 gameinfo1h1">@message.Sender.UserName <br><small class="text-muted">(@message.SentTime)</small></p>
+                            </div>
+                                <div class="col-xl-6">
+                                    <div class="card  p-3 m-1 mt-1 replymessage align-middle gameinfo1p">
+                                        <p class="m-0">@message.Message</p>
+                                 </div>
+                            </div>
+                                <div class="col-xl-3 ">
+                                </div>
+                        </div>
+                        }
+                        else
+                        {
+
+
+                            <div class="row gameinfo2 ">
+
+                                <div class="col-xl-3 d-xl-none ">
+                                    <p class="text-center  fw-bold p-1 m-1 card mt-1 gameinfo1h1">@message.Sender.UserName <br><small class="text-muted">(@message.SentTime)</small></p>
+                                </div>
+                                <div class="col-xl-3 ">
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="card  fs-7 p-3 m-1 mt-1 sendmessage gameinfo1p">
+                                        <p class="m-0">@message.Message</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 	d-none d-xl-block ">
+                                    <p class="text-center fw-bold p-1 m-1 card mt-1 gameinfo1h1">@message.Sender.UserName <br><small class="text-muted">(@message.SentTime)</small></p>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+
+
+
+
+            <div class=" gameinfo2 gamelistEditUserGameListEnd p-1 mt-1">
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#message').keyup(function () {
+            var text_length = $('#message').val().length;
+            var max_length = 500;
+            $('#charCount').html(text_length + '/' + max_length);
+        });
+        // trigger keyup event on page load
+        $('#message').keyup();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

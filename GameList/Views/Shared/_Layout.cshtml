@@ -1,0 +1,183 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor httpContextAccessor
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GameList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GameList.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="/img/logoicon.png">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <link rel="stylesheet" href="~/css/@(httpContextAccessor.HttpContext.Request.Cookies["theme"] ?? "dark")-theme.css" />
+
+    </head>
+<body>
+
+    <partial name="_CookieConsentPartial" />
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid h-50 ">
+                <a class="ps-2  pe-2 me-2 ms-2  img-fluid " asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/@(httpContextAccessor.HttpContext.Request.Cookies["theme"] ?? "logosvg").svg" style="width:185px;height:40px;"></a>
+
+                <button class=" gameinfo1p navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <i class="fa fa-angle-down" style="font-size:40px"></i>
+                </button>
+                <form class="d-flex flex-grow-1 mt-2 mb-2 ms-2 w-100" method="get" asp-action="GameSearch" asp-controller="Game">
+                        @if (ViewContext.RouteData.Values["action"].ToString() == "GameSearch")
+                        {
+
+
+                        <select class=" gameinfo1ptype p-2 pe-3  ps-3 border-0" name="type">
+                            @foreach (var type in Model.AvailableTypes)
+                            {
+                                <option selected="@(type == Model.SelectedType)">@type</option>
+                            }
+
+                            </select>
+                            <input class="form-control gameinfo1psearchbar  w-100" type="text" placeholder="Search a game..." aria-label="Search" name="searchquery" value="@Model.SearchQuery">
+                        }
+                        else{
+
+                            <select class=" gameinfo1ptype p-2 pe-3 ps-3 border-0" name="type">
+                                <option selected>Game</option>
+                                <option>Character</option>
+                                <option>Users</option>
+                            </select>
+                            <input class="form-control gameinfo1psearchbar  w-100" type="text" placeholder="Search..." aria-label="Search" name="searchquery" @*value="@Model.SearchQuery"*@>
+                        }
+                        <button class="btn gameinfo1psearch me-2 w-100" style="max-width:70px;"type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+
+                <div class="collapse navbar-collapse pe-0 me-0 " id="navbarSupportedContent">
+                    @if (SignInManager.IsSignedIn(User))
+                        {
+                        
+
+                        <a class="nav-link text-center gameinfo1menubuttons defaultTextColor m-2 fw-bolder  p-3" style="min-width:120px;" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@UserManager.GetUserName(User)"> @UserManager.GetUserName(User)</a>
+                        <ul class="navbar-nav ms-auto mb-lg-0" style="min-width:130px;">
+                            <li class="nav-item dropdown" style="min-width:130px;">
+
+                                <a class="nav-link gameinfo1menubuttons defaultTextColor m-2 p-3 text-center " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Options
+                                    <i class="fa fa-angle-down" style="font-size:20px"></i>
+                                </a>
+                                <ul class="dropdown-menu gameinfo1p  dropdown-menu-end " aria-labelledby="navbarDropdown">
+                                    <li class="nav-item  ">
+                                        <a class="nav-link gameinfo1limenu  ms-2 mt-2 mb-2" asp-area="" asp-controller="List" asp-action="UserGameList" asp-route-UserName="@UserManager.GetUserName(User)">My GameList</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  gameinfo1limenu  ms-2 mt-2 mb-2" asp-controller="User" asp-action="EditProfile">Edit Profile <i class="fa fa-cog" aria-hidden="true"></i></a>
+                                    </li>
+                                       <li class="nav-item">
+                                        <a class="nav-link gameinfo1limenu  ms-2 mt-2 mb-2" asp-area="" asp-controller="List" asp-action="EditUserGameList">Edit GameList <i class="fa fa-cog" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link gameinfo1limenu  ms-2 mt-2 mb-2" asp-area="" asp-controller="Feedback" asp-action="SendFeedback">Send Feedback</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link gameinfo1limenu bg-success text-warning  ms-2 mt-2 mb-2" href="https://forms.gle/EwHsqk3qgTbw2r5u8" target="_blank">Form <i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link gameinfo1limenu  ms-2 mt-2 mb-2 " role="button" aria-expanded="false" id="toggle-button" onclick="toggleTheme()">Toggle</a>
+                                    </li>
+
+                                    <li>
+                                        <hr class="pHrLine">
+                                    </li>
+                                    <li>
+                                        <form id="logoutForm" method="post" class="form-inline justify-content-center " asp-controller="Account" asp-action="LogOff" >
+                                            <div class="d-grid gap-2 col-12 mx-auto">
+                                                <button type="submit" class="btn border border-danger gameinfo1p logOutButton ms-2 me-2 mt-2 mb-2">Log out</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+
+                    }
+                    else
+                    {
+
+                        <a class="nav-link gameinfo1menubuttons bg-success text-warning m-2" role="button" style="min-width:90px;" aria-expanded="false" href="https://forms.gle/EwHsqk3qgTbw2r5u8" target="_blank">Form <i class="fa fa-check-square" aria-hidden="true"></i></a>
+                        <a class="nav-link gameinfo1menubuttons text-success m-2 " role="button" aria-expanded="false" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+
+                        <a class="nav-link gameinfo1menubuttons text-warning m-2 " role="button" aria-expanded="false" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+
+                        <a class="nav-link gameinfo1menubuttons m-2" role="button" aria-expanded="false" id="toggle-button" onclick="toggleTheme()"></a>
+
+                    }
+
+
+
+                    <script>
+                        function toggleTheme() {
+                            var currentTheme = document.cookie.replace(/(?:(?:^|.*;\s*)theme\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                            var toggleButton = document.getElementById("toggle-button");
+                            if (currentTheme === "light") {
+                                location.href = '@Url.Action("ToggleTheme", "Home", new { theme = "dark" })';
+                            } else {
+                                location.href = '@Url.Action("ToggleTheme", "Home", new { theme = "light" })';
+                            }
+                        }
+                        window.onload = function () {
+                            var currentTheme = document.cookie.replace(/(?:(?:^|.*;\s*)theme\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                            var toggleButton = document.getElementById("toggle-button");
+                            if (currentTheme === "light") {
+                                toggleButton.innerHTML = '<i class="fa fa-moon-o" aria-hidden="true"></i>';
+                                toggleButton.style.backgroundColor = "#9C9C9C";
+                                toggleButton.style.color = "#E0E0E0";
+                            } else {
+                                toggleButton.innerHTML = '<i class="fa fa-sun-o" aria-hidden="true"></i>';
+                                toggleButton.style.backgroundColor = "#B2B2B2";
+                                toggleButton.style.color = "black";
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </nav>
+
+     
+    </header>
+
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+        </main>
+
+
+    <footer>
+        <ul>
+            <li>All rights reserved © Copyright</li>
+            <li>Follow us on our social media.</li>
+            <li>Content courtesy of IGDB </li>
+            <li><a asp-controller="Home" asp-action="Privacy" class="text-warning">Privacy Policy </a> </li>
+            <li><a asp-controller="Home" asp-action="Cookies" class="text-warning">Cookies Policy </a></li>
+            <li><a asp-controller="Feedback" asp-action="SendFeedback" class="text-warning">Send Feedback </a></li>
+        </ul>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

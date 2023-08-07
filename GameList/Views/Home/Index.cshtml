@@ -1,0 +1,151 @@
+﻿@using System.Web
+@using GameList.ViewModels
+@model IndexGameViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="mx-auto" style="width: 200px;min-width: 200px;" >
+</div>
+
+<div class="container-fluid tiles">
+<div class="grid">
+        <div class="row">
+            @for (int i = 0; i < Model.RandomGames.Count(); i += 1)
+            {
+                <div class="col" align="center">
+                    <div class="item text-start">
+                        <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@Model.RandomGames.ElementAt(i).Id" aria-labelledby="person1"></a>
+                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + @Model.RandomGames.ElementAt(i).Cover.Value.ImageId + ".jpg")" alt=''>
+                        <div class="item__overlay">
+                            <h3 id="person1" aria-hidden="true">@Model.RandomGames.ElementAt(i).Name</h3>
+                            <div class="item__body">
+
+                                <p><b>Release date:</b> @Model.RandomGames.ElementAt(i).FirstReleaseDate.Value.Day/@Model.RandomGames.ElementAt(i).FirstReleaseDate.Value.Month/@Model.RandomGames.ElementAt(i).FirstReleaseDate.Value.Year</p>
+
+                                <p><b>Followers:</b> @Model.RandomGames.ElementAt(i).Follows</p>
+
+                                 <p><b>Rating:</b>  @String.Format("{0:0}", Model.RandomGames.ElementAt(i).AggregatedRating) </p>
+
+                               @* <b>Game genres:</b>
+                                <ul class="gamecoverlist">
+                                    @foreach (var item in @Model.RandomGames.ElementAt(i).Genres.Values)
+                                    {
+                                        <li>@item.Name</li>
+                                    }
+                                </ul>*@
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+</div>
+
+</div>
+
+<aside>
+
+    <div class="scores">
+        <div class="scoresinner ms-3 me-2 mt-1 mb-2 p-3 pt-1">
+            
+            
+            <div class="text-center fw-bolder fs-5 display-1 p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="pRightSide">
+                   Popular Upcoming Games
+                </p>
+            </div>
+
+
+
+            <table class="table table-borderless text-light mb-0" border=1 frame=void rules=rows style="border-spacing:0 2px;border-collapse: separate;" >
+                <thead>
+                    <tr  hidden>
+                        <th scope="col" class="text-center fs-6">Image</th>
+                        <th scope="col" class="text-center fs-6">Name </th>
+                    </tr>
+                </thead>
+                <tbody >
+                    @foreach (var upcomingGame in Model.UpcomingGames)
+                    {
+                        <tr class="gameinfo2">
+                            <td class="align-middle text-center ">
+                                @if (upcomingGame.Cover == null)
+                                {
+                                    <img src="~/img/nocover.png" style="max-width:90px;min-width:90px;max-height:128px;" class="mx-auto">
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_thumb/" + upcomingGame.Cover.Value.ImageId + ".jpg")" style="max-width:76px;min-width:76px;" class="mx-auto">
+
+                                }
+
+
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@upcomingGame.Id" class="text-decoration-none">
+                                    <p class="gameinfo1menubuttons p-2 fw-bold fs-6 text-center mb-0">@upcomingGame.Name</p>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="scores">
+        <div class="scoresinner ms-3 me-2 mt-1 mb-2 p-3 pt-1">
+
+
+            <div class="text-center fw-bolder fs-5 display-1 p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="pRightSide">
+                    Why register?
+                </p>
+            </div>
+
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                    <i class="fa fa-list" aria-hidden="true"></i> Get access to GameLists which you can customise both in content and design
+                </p>
+            </div>
+            
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                    <i class="fa fa-users" aria-hidden="true"></i>    Follow users, make friends, and send messages to mutuals
+                </p>
+            </div>
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                    <i class="fa fa-star" aria-hidden="true"></i>  Rate games and give them a status based on your experience with the game
+                </p>
+            </div>
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                    <i class="fa fa-share-alt-square" aria-hidden="true"></i>   Share your list and profile with friends
+                </p>
+            </div>
+            
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i> Get cool statistics depending on your GameList
+                </p>
+            </div>
+
+
+            <a asp-controller="Home" asp-action="FAQs" class="text-decoration-none">
+            <div class="text-center card  fw-bold p-1  m-1 mt-4 mb-4 gameinfo1p">
+                <p class="  pRightSide">
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>  Find more in our FAQs
+                </p>
+            </div>
+            </a>
+        </div>
+    </div>
+</aside>
+
+
+
+
+

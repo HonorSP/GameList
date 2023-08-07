@@ -1,0 +1,63 @@
+﻿@using System.Web
+@using GameList.ViewModels
+@model CustomiseListViewModel
+<div class="container-fluid px-4">
+    <div class="row gx-1 justify-content-center">
+        <div class="col-md-12">
+            <div class=" gameinfo2 gamelistEditUserGameList p-1">
+                <h2 class="fw-light"> <span class="fw-normal">Customisation</span></h2>
+            </div>
+            <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                <div style=" margin-top:2px;" class="defaultBgColorDark">
+                    <div class="row   p-5 defaultTextColor">
+                        <div class="col-sm-8 p-0 d-none d-lg-block " align="center">
+                            <div class="m-1" >
+                                <img src="~/img/customlist.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-8 p-0 pb-3  d-lg-none" align="center">
+                            <div class="m-1" >
+                                <img src="~/img/customlistmobile.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 p-0" align="center">
+                            <div class="m-1">
+                                <form asp-action="CustomiseList" method="post" role="form">
+                                    <div class="mb-md-5 mt-md-4 pb-5">
+                                        <div class="form-outline form-white mb-4">
+                                            <input asp-for="BgColorBody" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                            <label asp-for="BgColorBody" class="form-label">(1) Background Colour</label>
+
+                                        </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <input asp-for="BgColorDisplay" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                            <label asp-for="BgColorDisplay" class="form-label">(2) Header Background Colour</label>
+
+                                        </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <input asp-for="BgColorGameTile" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                            <label asp-for="BgColorGameTile" class="form-label">(3) Game Tiles Background Colour</label>
+                                        </div>
+                                        <button class="btn gameinfo1menubuttons btn-lg px-5 text-success" type="submit">Save</button>
+                                        <br>
+                                <div     class="card-body text-center ">
+                                    <a class="btn unfollowButton " asp-area="" asp-controller="List" asp-action="ResetDefault">Reset to Default</a>
+                                </div>
+                                        <br>
+                                        <span asp-validation-for="BgColorBody" class="text-danger"></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" gameinfo2 gamelistEditUserGameListEnd p-1" style="margin-top:2px;">
+                    <div class="card-body text-center ">
+                        <a class="btn  gameinfo1menubuttons" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@Model.UserName">Back to profile</a>
+                        <a class="btn followButton " asp-area="" asp-controller="List" asp-action="AdvancedCustomiseList">Advanced Customisation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

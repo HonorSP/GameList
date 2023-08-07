@@ -1,0 +1,138 @@
+﻿@using GameList.ViewModels
+@using Microsoft.AspNetCore.Identity
+@model EditProfileViewModel
+@inject UserManager<AppUser> UserManager
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-5 mt-3">
+            <div class="card gameinfo2 defaultTextColor" style="border-radius: 1rem;  height:955px;">
+                <div class="card-body p-5 text-center">
+
+                    <form asp-action="EditProfile" method="post" role="form" enctype="multipart/form-data">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+
+                            @*                        <div asp-validation-summary="All" class="text-danger"></div>*@
+                            <h2 class="fw-bold mb-2">Profile picture</h2>
+                            <p class="defaultTextColor mb-5">Please choose and upload a picture!</p>
+
+
+
+
+                            @{
+                                var imageUrl = string.IsNullOrEmpty(Model.ProfilePictureUrl)
+                                ? "/img/avatar.jpg"
+                                : Model.ProfilePictureUrl;
+                            }
+                            <img alt="Image" src="@imageUrl" class="avatar text-black center avatar-lg mb-3 mb-md-0" style="display: block; margin-left: auto; margin-right: auto; width: 100%; max-width: 400px;" />
+                            <br>
+
+                            <div class="form-outline form-white mb-4">
+                                <input asp-for="Image" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" type="file" id="file2" class="custom-file-input height-0" oninput="submitProfileImage();" />
+                                <label asp-for="Image" class="custom-file" for="file2" >(300x300 size)</label>
+                                <br>
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+
+                            <button class="btn gameinfo1menubuttons btn-lg px-5 text-success mb-1" type="submit">Upload and Change</button>
+
+                            <br>
+                            <br>
+                            @*
+                            <div>
+                            <small>For best results, use an image at least 256px by 256px in either .jpg or .png format</small>
+                            </div>
+                            *@
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-5">
+            <div class="row">
+                <div class="col-12 mb-3 mt-3" >
+                    <div class="card gameinfo2 defaultTextColor" style="border-radius: 1rem; height:400px;" >
+                        <div class="card-body p-5 text-center">
+                            <form asp-action="EditProfile" method="post" role="form">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+
+                                    <h2 class="fw-bold mb-2">Display name</h2>
+                                    <p class="defaultTextColor mb-4">Please enter a display name!</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="DisplayName" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                        <label asp-for="DisplayName" class="form-label" hidden>Display Name</label>
+                                        
+                                    </div>
+                                    <button class="btn gameinfo1menubuttons btn-lg px-5 text-success" type="submit">Save</button>
+                                    <br>
+                                        <span asp-validation-for="DisplayName" class="text-danger"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12">
+                    <div class="card gameinfo2 defaultTextColor" style="border-radius: 1rem; height:542px;">
+                        <div class="card-body p-5 text-center">
+                            <form asp-action="EditProfile" method="post" role="form">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <h2 class="fw-bold mb-2">Bio</h2>
+                                    <p class="defaultTextColor mb-4">Please enter a bio!</p>
+                                    <div class="form-outline form-white mb-4">
+                                        <textarea asp-for="Bio" class="form-control gameinfo1searchfilter gameinfo1" rows="5" style="resize:none;" id="bio"></textarea>
+                                        <label asp-for="Bio" class="form-label" hidden>Bio</label>
+                                      
+                                        <div class="gameinfo1searchfilter w-25  text-danger mt-2" id="charCount"></div>
+                                    </div>
+                                    <button class="btn gameinfo1menubuttons btn-lg px-5 text-success" type="submit">Save</button>
+                                    <br>
+                                    <span asp-validation-for="Bio" class="text-danger"></span>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 d-flex justify-content-center mt-3">
+
+            <div class="row">
+                <div class="col-12">
+
+                        <div class="card-body text-center ">
+                            <a class="nav-link gameinfo1menubuttons" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@UserManager.GetUserName(User)">Return</a>
+                        </div>
+                </div>
+                <div class="col-12">
+
+                        <div class="card-body text-center ">
+                            <a class="nav-link unfollowButton " asp-area="" asp-controller="Account" asp-action="DeleteUserAccount">Delete Account</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#bio').keyup(function () {
+            var text_length = $('#bio').val().length;
+            var max_length = 100;
+            $('#charCount').html(text_length + '/' + max_length);
+        });
+        // trigger keyup event on page load
+        $('#bio').keyup();
+    });
+</script>
+

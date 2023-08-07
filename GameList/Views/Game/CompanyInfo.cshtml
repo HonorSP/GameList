@@ -1,0 +1,151 @@
+﻿@using System.Text.RegularExpressions
+@model IEnumerable<IGDB.Models.Company>
+
+@foreach (var item in Model)
+{
+    <div class="container-fluid px-4">
+        <div class="row gx-1">
+            <div class="col-md-3 ">
+                <div class="gameinfo1 p-1 ">
+                    @if (@item.Logo == null)
+                    {
+
+                        <img src="/img/nocover.png">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + @item.Logo.Value.ImageId + ".jpg")">
+                    }
+                    <h1 class="text-center fw-bold fs-5 p-1 m-1 mt-2 gameinfo1h1">Character Information</h1>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+                        <p class="pLeftSide">Name:</p>
+                        <p class="pRightSide">@item.Name</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class=" gameinfo2 gameinfo2h2 p-1">
+                    <h2>@item.Name</h2>
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Description</h4>
+
+                    @if (item.Description != null)
+                    {
+                        <p>
+                            @item.Description
+
+                        </p>
+                    }
+                    else
+                    {
+                        <p>No description found</p>
+                    }
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Developed by @item.Name </h4>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control gameinfo1searchfilter " id="myInput2" type="text" placeholder="Search..">
+                        </div>
+                    </div>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-3 ">
+                        <div class="row" id="myDIV2">
+
+                            @if (item.Developed != null)
+                            {
+                                @foreach (var developed in item.Developed.Values)
+                                {
+                                    <div class="col-sm-4">
+                                        <ul class="list-group ">
+                                            <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@developed.Id" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons gameinfo1p align-items-center rounded-3  h6 mb-1 ">
+
+                                                    @developed.Name
+                                            </li>
+                                            </a>
+                                        </ul>
+
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                 <div class="col-xxl-12">
+                                     <p class="gameinfo1p p-3 mt-3">No developed games found</p>
+                                 </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <div class="row">
+                        <div class="col-6">
+                    <h4>Published by @item.Name </h4>
+                        </div>
+                        <div class="col-6">
+                    <input class="form-control gameinfo1searchfilter " id="myInput" type="text" placeholder="Search..">
+                    </div>
+                    </div>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-3 ">
+                        <div class="row" id="myDIV">
+
+                    @if (item.Published != null)
+                    {
+
+
+                        
+                                @foreach (var published in item.Published.Values)
+                                {
+                                    <div class="col-sm-4">
+                                        <ul class="list-group ">
+                                    <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@published.Id" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons gameinfo1p align-items-center rounded-3  h6 mb-1 ">
+                                           
+                                            @published.Name
+                                            </li>
+                                            </a>
+                                        </ul>
+
+                                    </div>
+                                }
+                    }
+                    else
+                    {
+                        <div class="col-xxl-12">
+                            <p class="gameinfo1p p-3 mt-3">No published games found</p>
+
+                        </div>
+                    }
+                </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myDIV *").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    $(document).ready(function () {
+        $("#myInput2").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myDIV2 *").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

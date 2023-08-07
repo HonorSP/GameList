@@ -1,0 +1,49 @@
+﻿@using GameList.ViewModels
+@model WelcomeViewModel
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card gameinfo2 defaultTextColor" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                    <form asp-action="Welcome" method="post" role="form" enctype="multipart/form-data">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            @*                        <div asp-validation-summary="All" class="text-danger"></div>*@
+                            <h2 class="fw-bold mb-2 text-uppercase">Step 1</h2>
+                            <p class="defaultTextColor mb-5">Please choose and upload a picture!</p>
+
+                             @{
+                                 var imageUrl = string.IsNullOrEmpty(Model.ProfilePictureUrl)
+                                 ? "/img/avatar.jpg"
+                                 : Model.ProfilePictureUrl;
+                             }
+                             <img alt="Image" src="@imageUrl" class="avatar avatar-lg mb-3 mb-md-0" />
+                            <br>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="Image" class="form-control form-control-lg" type="file" id="file2" class="custom-file-input height-0" oninput="submitProfileImage();" />
+                                <label asp-for="Image" class="custom-file" for="file2" hidden></label>
+                                        <br>
+                                        <span asp-validation-for="Image" class="text-danger" ></span>
+                                    </div>
+
+                            <button class="btn gameinfo1menubuttons btn-lg px-5 text-success"  type="submit">Upload</button>
+
+                            <br>
+                            <br>
+@*
+
+                                    <div>
+                                        <small>For best results, use an image at least 256px by 256px in either .jpg or .png format</small>
+                                    </div>
+*@
+                        </div>
+                     </form>
+                    <a class="btn gameinfo1menubuttons btn-lg px-5 text-info" asp-area="" asp-controller="Account" asp-action="Welcome2">Next</a>
+                 </div>
+             </div>
+        </div>
+    </div>
+</div>

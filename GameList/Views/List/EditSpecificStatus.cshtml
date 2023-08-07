@@ -1,0 +1,273 @@
+﻿@using GameList.ViewModels
+@model EditUserGameListViewModel
+
+
+<div class="container-fluid px-4">
+    <div class="row gx-1 justify-content-center">
+        <div class="col-md-10">
+            <div class=" gameinfo2 gamelistEditUserGameList p-1">
+                <h2 class="fw-light">Edit <span class="fw-normal">GameList</span></h2>
+            </div>
+            <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                <div style="margin-top:2px;" class="defaultBgColor">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditUserGameList" class="text-decoration-none nav-link gameinfo1limenu" >
+                                <p class=" fw-bold fs-6 text-center mb-0">All Games</p>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="1" class="text-decoration-none nav-link  @(Model.Status == 1 ? "gameinfo1limenuactive" : "gameinfo1limenu")" >
+                                <p class=" fw-bold fs-6 text-center mb-0">Playing</p>
+                            </a>
+                        </div>
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="2" class="text-decoration-none nav-link @(Model.Status == 2 ? "gameinfo1limenuactive" : "gameinfo1limenu")" >
+                                <p class=" fw-bold fs-6 text-center mb-0">Completed</p>
+                            </a>
+                        </div>
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="3" class="text-decoration-none nav-link @(Model.Status == 3 ? "gameinfo1limenuactive" : "gameinfo1limenu")" >
+                                <p class=" fw-bold fs-6 text-center mb-0">On-Hold</p>
+                            </a>
+                        </div>
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="4" class="text-decoration-none nav-link @(Model.Status == 4 ? "gameinfo1limenuactive" : "gameinfo1limenu")" >
+                                <p class=" fw-bold fs-6 text-center mb-0">Dropped</p>
+                            </a>
+                        </div>
+                        <div class="col-xxl-2 mt-2 mb-2" style="max-width:170px;">
+                            <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="5" class="text-decoration-none nav-link @(Model.Status == 5 ? "gameinfo1limenuactive" : "gameinfo1limenu")" >
+                                <p class=" fw-bold fs-6 text-center mb-0">Plan to Play</p>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <input class="form-control editUserGameListsearchbar border-0 w-100 fs-5" type="text" id="myInput" placeholder="Search..." aria-label="Search">
+                <table class="table table-borderless text-light mb-0" border=1 frame=void rules=rows style="border-spacing:0 2px;border-collapse: separate;" id="myTable">
+                    <thead>
+                    <tr class="defaultBgColor defaultTextColor">
+                            <th scope="col" class="d-none d-sm-table-cell text-center fs-6">Image</th>
+                            <th scope="col" class="text-center fs-6">
+                            <a class="gameinfo1limenu user-select-none text-decoration-none p-1 defaultTextColor" id="sortName">
+                                    Name <i class="fa fa-sort" aria-hidden="true"></i>
+                                </a>
+                            </th>
+                            <th scope="col" class="text-center fs-6">
+                                <a class="gameinfo1limenu user-select-none text-decoration-none p-1 defaultTextColor" id="ratingCol">
+                                    Rating <i class="fa fa-sort" aria-hidden="true"></i>
+                                </a>
+                            </th>
+                            <th scope="col" class="text-center fs-6">Status</th>
+                        <th scope="col" class="text-center   update-col fs-6">Update</th>
+                            <th scope="col" class="text-center  remove-col  fs-6">Remove</th>
+                        </tr>
+                    </thead>
+                <tbody id="mySearch">
+
+                        @foreach (var userGameList in Model.UserGameLists)
+                        {
+                            <tr class="gameinfo2">
+                            <td class="align-middle d-none text-center d-sm-table-cell pt-3 pb-3">
+                                @if (userGameList.GameImageId == null)
+                                {
+                                    <img src="~/img/nocover.png" style="max-width:90px;min-width:90px;max-height:90px;" class="mx-auto">
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_thumb/" + userGameList.GameImageId + ".jpg")" style="max-width:90px;min-width:90px;" class="mx-auto">
+
+                                }
+                                </td>
+                            <td class="align-middle w-50">
+                                <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@userGameList.GameId" class="text-decoration-none">
+                                        <p class="gameinfo1menubuttons p-2 fw-bold  fs-6 text-center mb-0">@userGameList.GameName</p>
+                                    </a>
+                                </td>
+                                <form method="post" asp-action="UpdateAddGameList" asp-controller="List">
+
+                                    <input type="hidden" name="gameId" value="@userGameList.GameId">
+                                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                    <input type="hidden" name="status" value="@Model.Status" />
+
+
+                                <td class="align-middle  ">
+                                    <select class="mx-auto gameinfo1selectrating  fw-bold fs-6  p-2 form-select text-center" style="max-width:120px;min-width:70px;" name="gameRating">
+                                            @{
+                                                int index = Model.UserGameLists.ToList().IndexOf(userGameList);
+                                                Tuple<string, string> ratingAndStatus = Model.ratingsAndStatuses[userGameList.GameId];
+                                            }
+
+                                            @foreach (var rating in Model.AvailableSelectRatings)
+                                            {
+                                                if (rating == @ratingAndStatus.Item1)
+                                                {
+                                                <option class="selectedrating" selected>@rating</option>
+                                                }
+                                                else
+                                                {
+                                                <option class="selectedrating">@rating</option>
+                                                }
+                                            }
+
+                                    </select>
+                                </td>
+                                <td class="align-middle">
+                                    <select class=" mx-auto gameinfo1selectstatus fw-bold fs-6  p-2 form-select text-center" style="max-width:120px;min-width:70px;" name="gameStatus">
+
+                                            @foreach (var status in Model.AvailableSelectStatus)
+                                            {
+                                                if (status == ratingAndStatus.Item2)
+                                                {
+                                                <option class="selectedstatus" selected>@status</option>
+                                                }
+                                                else
+                                                {
+                                                <option class="selectedstatus">@status</option>
+                                                }
+                                            }
+
+                                    </select>
+                                </td>
+
+
+
+                            <td class=" align-middle text-center  update-col">
+                                <div class="text-center d-grid gap-2 d-flex justify-content-center">
+                                    <button class="nav-link gameinfo1menubuttons fw-bold fs-6   mt-2 mb-2 border-0  text-center" role="button" aria-expanded="false" type="submit"> <i class="fa fa-refresh text-info" aria-hidden="true"></i></button>
+                                </div>
+                            </td>
+                            <td class=" align-middle text-center  remove-col">
+                                <div class="text-center d-grid gap-2 d-flex justify-content-center">
+                                    <button class="nav-link gameinfo1menubuttons  fw-bold fs-6 mt-2 mb-2 border-0  text-center" role="button" aria-expanded="false" asp-controller="List" asp-action="RemoveGame" asp-route-gameId="@userGameList.GameId" asp-route-status="@Model.Status"> <i class="fa fa-trash text-danger" aria-hidden="true"></i></button>
+                            </div>
+                            </td>
+                                </form>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+                <script>
+                    $(document).ready(function () {
+                        $("#myInput").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                        $("#mySearch tr").filter(function () {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+
+                </script>
+                <script>
+                    var sortOrder = "ascending";
+                    window.onload = function () {
+                        $("#ratingCol").click(function () {
+                            var table, rows, switching, i, x, y, shouldSwitch;
+                            table = document.getElementById("myTable");
+                            switching = true;
+                            /*Make a loop that will continue until
+                            no switching has been done:*/
+                            while (switching) {
+                                //start by saying: no switching is done:
+                                switching = false;
+                                rows = table.rows;
+                                /*Loop through all table rows (except the
+                                first, which contains table headers):*/
+                                for (i = 1; i < (rows.length - 1); i++) {
+                                    //start by saying there should be no switching:
+                                    shouldSwitch = false;
+                                    /*Get the two elements you want to compare,
+                                    one from current row and one from the next:*/
+                                    x = rows[i].getElementsByTagName("TD")[2];
+                                    y = rows[i + 1].getElementsByTagName("TD")[2];
+                                    //check if the two rows should switch place:
+                                    if (sortOrder === "ascending") {
+                                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                            //if so, mark as a switch and break the loop:
+                                            shouldSwitch = true;
+                                            break;
+                                        }
+                                    } else {
+                                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                            //if so, mark as a switch and break the loop:
+                                            shouldSwitch = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if (shouldSwitch) {
+                                    /*If a switch has been marked, make the switch
+                                    and mark that a switch has been done:*/
+                                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                                    switching = true;
+                                }
+                            }
+                            sortOrder = (sortOrder === "ascending") ? "descending" : "ascending";
+                        });
+
+
+
+                    }
+                </script>
+                <script>
+                    $(document).ready(function () {
+                        var sortAscending = true;
+                        $("#sortName").click(function () {
+                            var rows = $("#myTable tbody tr").get();
+                            rows.sort(function (a, b) {
+                                var A = $(a).find(".gameinfo1menubuttons").text().toUpperCase();
+                                var B = $(b).find(".gameinfo1menubuttons").text().toUpperCase();
+                                if (sortAscending) {
+                                    if (A < B) {
+                                        return -1;
+                                    }
+                                    if (A > B) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                } else {
+                                    if (A > B) {
+                                        return -1;
+                                    }
+                                    if (A < B) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                }
+                            });
+                            sortAscending = !sortAscending;
+                            $.each(rows, function (index, row) {
+                                $("#myTable").children("tbody").append(row);
+                            });
+                        });
+                    });
+
+                </script>
+
+            <div class=" gameinfo2 gamelistEditUserGameListEnd p-1">
+            </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

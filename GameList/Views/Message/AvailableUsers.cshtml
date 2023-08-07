@@ -1,0 +1,74 @@
+﻿@using System.Web
+@using GameList.ViewModels
+@model AvailableUsersViewModel
+@{
+    ViewData["Title"] = "Available Users";
+}
+
+<div class="container-fluid px-4">
+    <div class="row gx-1 justify-content-center">
+        <div class="col-md-12">
+            <div class=" gameinfo2 gamelistEditUserGameList p-1">
+                <h2 class="fw-light"> <span class="fw-normal">Chat Users</span></h2>
+            </div>
+
+            <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                <div style="margin-top:2px;" class="defaultBgColorDark">
+
+                    <div class="row  d-flex justify-content-center p-5">
+
+                        @if (Model.AvailableUsers != null)
+                        {
+                            @foreach (var user in Model.AvailableUsers.Result)
+                            {
+
+
+                                <div class="col-sm p-0" align="center">
+
+                                    <div class="m-1" style="max-width:450px; max-height:200px;">
+                                        <ul class="list-group ">
+                                            <a asp-controller="Message" asp-action="AllMessages" asp-route-followUserId="@user.UserId" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+                                                <div class="">
+
+                                                    <img style="max-width:70px;max-height:70px;min-width:60px;width:60px;" src="@user.ProfilePictureUrl">
+
+                                                </div>
+                                                <div class="me-4 ms-4 fw-bold" style="">
+                                                        @user.DisplayName
+                                                    <br>
+                                                    <p class="fw-normal">@String.Format("@{0}", @user.UserName)</p>
+                                                </div>
+                                            </li>
+                                            </a>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                            @if (Model.AvailableUsers.Result.Count() < 1)
+                            {
+                                
+                                 <div class=" gameinfo2 gameinfo2p">
+
+                                     <div class="text-center fw-bolder fs-6 p-1 pt-2 m-1 mt-1 gameinfo1p">
+                                                     <h5>To chat with someone you must follow them and they must follow you.</h5>
+
+                                     </div>
+
+                                 </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class=" gameinfo2 gamelistEditUserGameListEnd p-1" style="margin-top:2px;">
+            </div>
+        </div>
+    </div>
+</div>
+

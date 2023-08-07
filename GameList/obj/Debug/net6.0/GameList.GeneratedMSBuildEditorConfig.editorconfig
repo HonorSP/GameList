@@ -1,0 +1,185 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GameList
+build_property.RootNamespace = GameList
+build_property.ProjectDir = D:\Utility\Visual Studio 2022 Saves\GameList\GameList\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Utility\Visual Studio 2022 Saves\GameList\GameList
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ConfirmDeleteAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRGVsZXRlQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/DeleteUserAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWxldGVVc2VyQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ErrorDeleteAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFcnJvckRlbGV0ZUFjY291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/Lockout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/Welcome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxXZWxjb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Account/Welcome2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxXZWxjb21lMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Feedback/FeedbackConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcRmVlZGJhY2tDb25maXJtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Feedback/FeedbackDenial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcRmVlZGJhY2tEZW5pYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Feedback/SendFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcU2VuZEZlZWRiYWNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Follow/Followers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93XEZvbGxvd2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Follow/Following.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93XEZvbGxvd2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Game/CharacterInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxDaGFyYWN0ZXJJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Game/CompanyInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxDb21wYW55SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Game/GameInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHYW1lSW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Game/GameSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHYW1lU2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Home/Cookies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb29raWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Home/FAQs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/List/AdvancedCustomiseList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdFxBZHZhbmNlZEN1c3RvbWlzZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/List/CustomiseList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdFxDdXN0b21pc2VMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/List/EditSpecificStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdFxFZGl0U3BlY2lmaWNTdGF0dXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/List/EditUserGameList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdFxFZGl0VXNlckdhbWVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/List/UserGameList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdFxVc2VyR2FtZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Message/AllMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxBbGxNZXNzYWdlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Message/AvailableUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxBdmFpbGFibGVVc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Shared/_CookieConsentPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db29raWVDb25zZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/User/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/User/SearchUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTZWFyY2hVc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/User/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/User/VisitorProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxWaXNpdG9yUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Utility/Visual Studio 2022 Saves/GameList/GameList/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-8x5zerrw7b

@@ -1,0 +1,552 @@
+﻿@using System.Text.RegularExpressions
+@using GameList.ViewModels
+@model UserProfileViewModel
+
+
+    <div class="container-fluid px-4">
+        <div class="row gx-1">
+            <div class="col-md-3 ">
+
+            <div class="card gameinfo1">
+
+                <img src="@Model.ProfilePictureUrl" class="card-img-top   mb-2" alt="...">
+                <div class="card-body pt-0 mt-0">
+                    <p class="text-center fw-bold  p-1 m-1  gameinfo1h1">@Model.DisplayName</p>
+                    <div class="row">
+                        <div class="col-xxl-8">
+                            <p style="max-width: 200px;" class="gameinfo1h1 p-1 m-1">@String.Format("@{0}", Model.UserName)</p>
+                        </div>
+                        <div class="col-xxl-4">
+                        </div>
+                    </div>
+
+                    
+                        @if (Model.UserName == Model.CurrentUserName)
+                        {
+                            <div class="row">
+                                <div class="col-xxl-8">
+                                    <a style="max-width: 100px;" class="nav-link gameinfo1menubuttons text-center p-1 m-1 ml-auto" asp-controller="User" asp-action="EditProfile">Edit <i class="fa fa-cog" aria-hidden="true"></i></a>
+
+                                </div>
+                                <div class="col-xxl-4"></div>
+                            </div>
+
+                        }
+
+                        
+                </div>
+
+            
+            </div>
+            <div class="gameinfo2 gameinfo2p mt-1">
+                <div class="row justify-content-center">
+                    
+                    @if (Model.UserName == Model.CurrentUserName)
+                    {
+
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-xxl-6">
+                                    <a style="max-width: 500px; min-width: 100px;" class="nav-link gameinfo1menubuttons text-center  p-1 m-1 ml-auto" asp-controller="Follow" asp-action="Following" asp-route-followUserId="@Model.Id"><span class=" fw-bold" style="color:#5C9BA8;">@Model.Following</span> Following</a>
+                                </div>
+                                <div class="col-xxl-6">
+                                    <a style="max-width: 500px; min-width: 100px;" class="nav-link gameinfo1menubuttons text-center  p-1 m-1 ml-auto" asp-controller="Follow" asp-action="Followers" asp-route-followUserId="@Model.Id"><span class=" fw-bold" style="color:#5C9BA8;">@Model.Followers</span> Followers</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+                    else
+                    {
+                        if(Model.CheckIsFollowing == true)
+                        {
+
+                            <div class="col-12">
+                                <a class="nav-link unfollowButton  fw-bolder text-center fs-3 p-1 m-1 ml-auto" asp-controller="Follow" asp-action="UnfollowUser" asp-route-followUserId="@Model.Id">Unfollow</a>
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            <div class="col-12">
+                                <a class="nav-link followButton fw-bolder text-center fs-3 p-1 m-1 ml-auto" asp-controller="Follow" asp-action="FollowUser" asp-route-followUserId="@Model.Id">Follow</a>
+                            </div>
+
+                        }
+
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-xxl-6">
+                                    <a style="max-width: 500px; min-width: 100px;" class="nav-link gameinfo1menubuttons text-center  p-1 m-1 ml-auto" asp-controller="Follow" asp-action="Following" asp-route-followUserId="@Model.Id"><span class=" fw-bold" style="color:#5C9BA8;">@Model.Following</span> Following</a>
+                                </div>
+                                <div class="col-xxl-6">
+                                    <a style="max-width: 500px; min-width: 100px;" class="nav-link gameinfo1menubuttons text-center  p-1 m-1 ml-auto" asp-controller="Follow" asp-action="Followers" asp-route-followUserId="@Model.Id"><span class=" fw-bold" style="color:#5C9BA8;">@Model.Followers</span> Followers</a>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                    }
+
+                </div>
+            </div>
+
+            @if (Model.CheckBothAreFollowing == true)
+            {
+
+            <div class="gameinfo2 gameinfo2p mt-1">
+                    <div class="col-12 d-flex justify-content-center">
+                        <a class="nav-link messageButton fw-bolder text-center fs-3 p-1 m-1 ml-auto" style="width:200px;" asp-controller="Message" asp-action="AllMessages" asp-route-followUserId="@Model.Id"><i class="fa fa-comment" aria-hidden="true"></i></a>
+                    </div>
+            </div>
+
+            }
+            @if (Model.UserName == Model.CurrentUserName)
+            {  
+                <div class="gameinfo2 gameinfo2p mt-1">
+                    <div class="col-12 d-flex justify-content-center">
+                        <a class="nav-link  messageButton fw-bolder text-center fs-3 p-1 m-1 ml-auto" style="width:200px;" asp-controller="Message" asp-action="AvailableUsers"><i class="fa fa-comments" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            }
+            <div class="card gameinfo2 gameinfo2p mt-1">
+
+
+                @if (Model.UserName == Model.CurrentUserName)
+                    {
+                        <a class="nav-link mygamelistuserprofile text-center text-decoration-none" asp-area="" asp-controller="List" asp-action="UserGameList" asp-route-UserName="@Model.UserName">
+                            <p class=" fw-bold fs-4 pe-4 ps-4 pt-3 pb-3 text-center mb-0">My GameList</p>
+                        </a>
+                        <a asp-controller="List" asp-action="EditUserGameList" class="text-decoration-none">
+
+                            <p class=" mygamelistuserprofileedit fw-bold fs-6 p-2 text-center mb-0">Edit <i class="fa fa-cog" aria-hidden="true"></i></p>
+                        </a>
+
+
+
+                    <a style="max-width: 500px; min-width: 100px;" class="nav-link gameinfo1menubuttons text-center mt-3 p-1 m-1 ml-auto" asp-area="" asp-controller="List" asp-action="CustomiseList">
+                        <p class=" fw-bold fs-6 p-0 text-center mb-0">Customise List</p>
+                    </a>
+
+                    }
+                
+                else
+                {
+
+                    <a class="nav-link mygamelistuserprofile text-center text-decoration-none" asp-area="" asp-controller="List" asp-action="UserGameList" asp-route-UserName="@Model.UserName" style="border-radius:10px !important;">
+                        <p class=" fw-bold fs-4 pe-4 ps-4 pt-3 pb-3 text-center mb-0">My GameList</p>
+                    </a>
+
+                }
+
+                
+
+            </div>
+             @if (Model.UserName == Model.CurrentUserName && Model.Feed != null && Model.Feed.Any())
+            {
+
+            <div class="gameinfo2 text-center gameinfo2p pt-2 pb-1">
+                <h4 class="defaultTextColor">Feed</h4>
+            </div>
+            
+                    <div class="gameinfo2 gameinfo2p">
+                @foreach (var item in Model.Feed)
+                {
+                        if(item.Action == "followed you")
+                        {
+
+                            <div class="col-12 d-flex justify-content-center ">
+                                <a class="nav-link  followButton fw-bolder card text-center p-2 m-1 ml-auto w-100" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@item.UserName">@item.UserName @item.Action <br> <small class="fw-normal text-end">(@item.Timestamp.Value.ToLocalTime())</small></a>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="col-12 d-flex justify-content-center ">
+                                <a class="nav-link  messageButton fw-bolder card text-center p-2 m-1 ml-auto w-100" asp-controller="Message" asp-action="AllMessages" asp-route-followUserId="@item.UserId">@item.UserName @item.Action <br> <small class="fw-normal text-end">(@item.Timestamp.Value.ToLocalTime())</small></a>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+
+
+        </div>
+        <div class="col-md-9">
+                <div class=" gameinfo2 gameinfo2h2 p-1">
+                <h2 class="defaultTextColor">@Model.DisplayName</h2>
+            </div>
+
+
+            <div class="row gx-1">
+
+                <div class="col-xxl-4 ">
+
+                    
+                    <div class=" gameinfo2 text-center gameinfo2p pt-1 pb-1">
+                        <h4 class="defaultTextColor">Bio</h4>
+                    </div>
+
+                        
+                    <div class=" gameinfo2 gameinfo2p" style="width:100%;min-height:222px;">
+                        <div class=" fs-7 p-2 ps-2 pt-2 m-1 mt-2 gameinfo1p text-wrap text-break " style="min-height: 10rem;word-wrap: break-word;">
+                            <p>@Model.Bio </p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xxl-1 d-none d-xxl-block">
+                    <div class="gameinfo2 gameinfo2p text-center fw-bold defaultTextColor"  style="height:272px;">
+                        <h5>R</h5>
+                        <h5>A</h5>
+                        <h5>T</h5>
+                        <h5>I</h5>
+                        <h5>N</h5>
+                        <h5>G</h5>
+                        <h5>S</h5>
+                    </div>
+                </div>
+
+                <div class="col-xxl-1 d-xxl-none text-center">
+                    <div class="gameinfo2 gameinfo2p text-center">
+                        
+                        <div class="text-center fw-bolder pt-1 pb-1 gameinfo1p">
+
+                            <h5>Ratings</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-7">
+                    <div class=" gameinfo2 gameinfo2p">
+                        @if (Model.CountRating0 == 0 && Model.CountRating1 == 0 && Model.CountRating2 == 0 && Model.CountRating3 == 0 && Model.CountRating4 == 0 && Model.CountRating5 == 0 && Model.CountRating6 == 0 && Model.CountRating7 == 0 
+                        && Model.CountRating8 == 0 && Model.CountRating9 == 0 && Model.CountRating10 == 0 )
+                        {
+
+
+
+                            <div class="text-center fw-bolder fs-6 p-1 pt-2 m-1 mt-1 gameinfo1p" style="width:100%;height:224px;">
+
+                                <p> No data available</p>
+
+                            </div>
+
+                        }
+                        else
+                        {
+
+
+                            <canvas id="myChart2" style="width:100%;height:232px;"></canvas>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class=" gameinfo2 text-center gameinfo2p pt-1 pb-1">
+                <h4 class="defaultTextColor">Status Stats</h4>
+            </div>
+
+
+
+            <div class="row gx-1">
+
+                <div class="col-xxl-3 ">
+
+                    
+            <div class=" gameinfo2 gameinfo2p">
+
+
+                        <div class="row d-flex justify-content-center pt-4 pb-4">
+
+
+
+                            
+                            @if (Model.UserName == Model.CurrentUserName)
+                            {
+                                <div class="col-xxl-12 mt-2 mb-2 " style="max-width:250px;min-width:150px;">
+                                    <a asp-controller="List" asp-action="EditUserGameList" class="text-decoration-none nav-link userporfilestatusna">
+                                        <p class=" fw-bold fs-6 text-center mb-0">All</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusAll</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="1" class="text-decoration-none nav-link userporfilestatusplaying">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Playing</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusPlaying</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2 " style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="2" class="text-decoration-none nav-link userporfilestatuscompleted">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Completed</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusCompleted</p>
+
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="col-xxl-12 mt-2 mb-2 " style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatusna">
+                                        <p class=" fw-bold fs-6 text-center mb-0">All</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusAll</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-status="1" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatusplaying">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Playing</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusPlaying</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2 " style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-status="2" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatuscompleted">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Completed</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusCompleted</p>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xxl-6 mw-100  mh-100">
+                    <div class=" gameinfo2 gameinfo2p">
+
+                        @if (Model.CountStatusPlaying == 0 && Model.CountStatusCompleted == 0 && Model.CountStatusOnHold == 0 && Model.CountStatusDropped == 0 && @Model.CountStatusPlanToPlay == 0)
+                        {
+
+
+
+                            <div class="text-center fw-bolder fs-6 p-1 pt-2 m-1 mt-1 gameinfo1p" style="width:100%;height:280px;">
+
+                                <p> No data available</p>
+
+                            </div>
+
+                        }
+                        else{
+                            
+                        <canvas id="myChart" style="width:100%;height:288px;"></canvas>
+                        }
+
+
+
+                    </div>
+                </div>
+                <div class="col-xxl-3 ">
+                    <div class=" gameinfo2 gameinfo2p">
+
+
+
+
+
+                        <div class="row d-flex justify-content-center pt-4 pb-4">
+
+                             
+                            @if (Model.UserName == Model.CurrentUserName)
+                            {
+
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+                                    <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="3" class="text-decoration-none nav-link userporfilestatusonhold">
+                                        <p class=" fw-bold fs-6 text-center mb-0">On-Hold</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusOnHold</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="4" class="text-decoration-none nav-link userporfilestatusdropped">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Dropped</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusDropped</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="EditSpecificStatus" asp-route-status="5" class="text-decoration-none nav-link userporfilestatusplantoplay">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Plan to Play</p>
+                                    </a>
+
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusPlanToPlay</p>
+
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-status="3" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatusonhold">
+                                        <p class=" fw-bold fs-6 text-center mb-0">On-Hold</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusOnHold</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-status="4" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatusdropped">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Dropped</p>
+                                    </a>
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusDropped</p>
+
+                                </div>
+
+                                <div class="col-xxl-12 mt-2 mb-2" style="max-width:250px;min-width:150px;">
+
+                                    <a asp-controller="List" asp-action="UserGameList" asp-route-status="5" asp-route-UserName="@Model.UserName" class="text-decoration-none nav-link userporfilestatusplantoplay">
+                                        <p class=" fw-bold fs-6 text-center mb-0">Plan to Play</p>
+                                    </a>
+
+                                    <p class=" userporfilestatusnanumber fw-bold fs-6 text-center mb-0">@Model.CountStatusPlanToPlay</p>
+
+                                </div>
+                            }
+    
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" gameinfo2 gameinfo2p gamelistEditUserGameListEnd p-1 ">
+                 </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+var xValues = ["Playing", "Completed", "On-Hold", "Dropped", "Plan to play",];
+var yValues = [@Model.CountStatusPlaying, @Model.CountStatusCompleted, @Model.CountStatusOnHold, @Model.CountStatusDropped, @Model.CountStatusPlanToPlay];
+
+
+    var barColors = [
+    "#5DB04A",
+    "#3759AF",
+    "#A69045",
+    "#A33F3F",
+        "#4b4b4b"
+    ];
+
+        new Chart("myChart", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+            borderColor: '#0c0c0c',
+                    data: yValues
+                }]
+             },
+    options: {
+         maintainAspectRatio: false,
+                 legend: {
+                     display: false
+                 }
+        }
+        });
+</script>
+
+<script>
+    var aValues = [
+        "0 (Awful)",    
+        "1 (Appalling)",
+        "2 (Horrible)", 
+        "3 (Very Bad)", 
+        "4 (Bad)",      
+        "5 (Average)",  
+        "6 (Fine)",     
+        "7 (Good)",     
+        "8 (Very Good)",
+        "9 (Great)",    
+        "10 (GOTY)"  
+    ];
+    var bValues = [
+       @Model.CountRating0 ,
+       @Model.CountRating1 ,
+       @Model.CountRating2 ,
+       @Model.CountRating3 ,
+       @Model.CountRating4 ,
+       @Model.CountRating5 ,
+       @Model.CountRating6 ,
+       @Model.CountRating7 ,
+       @Model.CountRating8 ,
+       @Model.CountRating9 ,
+       @Model.CountRating10  
+    ];
+    var barColors = ["#6E5C1E", "#7E6923", "#887125", "#977E2A", "#A3882D", "#B29531", "#C0A135", "#C9A938", "#D8B53C", "#E4BF3D", "#F2CB3F"];
+
+    new Chart("myChart2", {
+        type: "bar",
+        data: {
+            labels: aValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: bValues
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            legend: { display: false },
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.99,
+                    categoryPercentage: 0.99,
+                    gridLines: {
+                        display: false
+                    },
+
+                    display: false
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: Math.max(...bValues)
+
+                    },
+
+                    display: false,
+                    gridLines: {
+                        display: false
+                    }
+
+                }]
+               
+            }
+    
+        }
+    });
+</script>  

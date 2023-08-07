@@ -1,0 +1,691 @@
+﻿@using GameList.ViewModels
+@using System.Text.RegularExpressions
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@model GameInfoViewModel
+@{
+    ViewData["Title"] = "Game Info";
+}
+@foreach (var item in Model.GameDataInfo)
+{
+    <div class="container-fluid px-4">
+        <div class="row gx-1">
+            <div class="col-md-3 ">
+                <div class="gameinfo1 p-1 ">
+                    @if (@item.Cover == null)
+                    {
+
+                        <img src="/img/nocover.png">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + @item.Cover.Value.ImageId + ".jpg")">
+                    }
+
+                    @if (Model.AverageRating == 11)
+                    {
+
+                    <h1 class="ratinguserlistna mx-auto p-3 text-center ">N/A </h1>
+                    <p class="ratinguserlistnaratings mx-auto text-center ">@Model.NumberRatings ratings</p>
+                    }
+                    else
+                    {
+
+                        <h1 class="ratinguserlist mx-auto p-3 text-center ">@Model.AverageRating</h1>
+                        <p class="ratinguserlistratings mx-auto text-center ">@Model.NumberRatings ratings</p>
+                    }
+                    <h1 class="text-center fw-bold fs-5 p-1 m-1 mt-2 gameinfo1h1">Game Information</h1>
+                    
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+                    <div class="row p-1">
+                            <div class="col-xxl-4 text-start" style="min-width: 60px;">
+                            <p >Name:</p>
+                        </div>
+                        <div class="col-xxl-8 text-end">
+                            
+                            <p>@item.Name</p>
+                        </div>
+                    </div>
+                        <hr class="pHrLine">
+
+
+                        <div class="row p-1">
+                            <div class="col-xxl-4 text-start" style="min-width: 60px;">
+
+                                <p>Release date:</p>
+                            </div>
+                            <div class="col-xxl-8 text-end">
+                                @if (item.FirstReleaseDate != null)
+                                {
+                                    <p>@item.FirstReleaseDate.Value.Day/@item.FirstReleaseDate.Value.Month/@item.FirstReleaseDate.Value.Year </p>
+                                }
+                                else
+                                {
+
+                                    <p>TBD</p>
+                                }
+                            </div>
+                        </div>
+
+                        <hr class="pHrLine">
+
+
+                        <div class="row p-1">
+                            <div class="col-xxl-4 text-start" style="min-width: 60px;">
+                                <p>Category:</p>
+                            </div>
+                            <div class="col-xxl-8 text-end ">
+                                @if (item.Category != null)
+                                {
+
+                                    string originalString = @item.Category.Value.ToString();
+                                    string modifiedString = Regex.Replace(originalString, "(?<!^)([A-Z])", " $1");
+                                    <p>@modifiedString</p>
+                                }
+                                else
+                                {
+
+                                    <p>No info</p>
+                                }
+                            </div>
+                        </div>
+
+                        <hr class="pHrLine">
+
+                    <div class="row p-1">
+                            <div class="col-xxl-4 text-start" style="min-width: 60px;">
+                                <p>Genres:</p>
+                        </div>
+                        <div class="col-xxl-8 text-end" >
+                                <ul>
+                                    @if (item.Genres != null)
+                                    {
+                                        @foreach (var genre in item.Genres.Values)
+                                        {
+                                            <li style="list-style-type:  none;">@genre.Name</li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li style="list-style-type:  none;">No info</li>
+                                    }
+                                </ul>
+                        </div>
+                    </div>
+
+                        <hr class="pHrLine">
+                        <div class="row p-1">
+                            <div class="col-xxl-4 text-start" style="min-width: 60px;">
+                                <p>Platforms:</p>
+                            </div>
+                            <div class="col-xxl-8 text-end">
+                                <ul>
+
+                                    @if (item.Platforms != null)
+                                    {
+
+                                        @foreach (var platform in item.Platforms.Values)
+                                        {
+                                            <li style="list-style-type:  none;">@platform.Name</li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li style="list-style-type:  none;">No info</li>
+
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                    @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <div class=" gameinfo2 mt-1 p-1">
+
+                        <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+
+                            <div class=" p-1 mt-1 text-center">
+
+                                @if (Model.GameCheck == true)
+                                {
+
+
+                                    <form class="" method="post" asp-action="UpdateAddGameList" asp-controller="List">
+                                        <div class="text-center fw-bold fs-7 p-1 m-2  text-center">
+
+                                            <input type="hidden" name="gameId" value="@item.Id">
+                                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+
+                                            <div class="row justify-content-center text-center">
+                                                <div class="col-xxl-6 mx-auto">
+                                                    <select class="pLeftSide gameinfo1selectrating  fw-bold fs-6  p-2 form-select text-center" name="gameRating">
+
+                                                            @foreach (var rating in Model.AvailableSelectRatings)
+                                                                {
+                                                                    if (rating == Model.GameRating)
+                                                                    {
+                                                                        <option class="selectedrating" selected>@rating</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option class="selectedrating">@rating</option>
+                                                                    }
+                                                                }
+                                                        </select>
+                                                </div>
+                                                <div class="col-xxl-6 mx-auto">
+                                                    <select class="pRightSide gameinfo1selectstatus p-2 form-select  fw-bold fs-6 text-center" name="gameStatus">
+
+                                                         @foreach (var status in Model.AvailableSelectStatus)
+                                                                {
+                                                                    if (status == Model.GameStatus)
+                                                                    {
+                                                                        <option class="selectedstatus" selected>@status</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                <option class="selectedstatus">@status</option>
+                                                                    }
+                                                                }
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-xxl-12">
+                                                    <button class="btn mb-2 mt-2 p-4 pt-4 pb-4 gameinfo1addgame pRightSide fw-bolder fs-5" type="submit" >UPDATE GAME</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+                                }
+
+                                else{
+
+                                
+
+                        <form class="" method="post" asp-action="AddGameList" asp-controller="List">
+                                <div class="text-center fw-bold fs-7 p-1 m-2  text-center">
+
+                                <input type="hidden" name="gameId" value="@item.Id">
+                                <input type="hidden" name="gameName" value="@item.Name">
+                                @if(item.Cover != null)
+                                {
+                                <input type="hidden" name="gameImageId" value="@item.Cover.Value.ImageId">
+                                }
+
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col-xxl-6 mx-auto">
+                                       
+                                     <select class="pLeftSide gameinfo1selectrating  fw-bold fs-6  p-2 form-select text-center" name="gameRating">
+                                         
+                                                        @foreach (var rating in Model.AvailableSelectRatings)
+                                                        {
+                                                            if (rating == "Select Rating")
+                                                            {
+                                                                <option class="selectedrating" selected>Select Rating</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option class="selectedrating">@rating</option>
+                                                            }
+                                                        }
+                                     </select>
+                                     </div>
+                                        <div class="col-xxl-6 mx-auto">
+                                                <select class="pRightSide gameinfo1selectstatus p-2 form-select  fw-bold fs-6 text-center" name="gameStatus">
+                                                 @foreach (var status in Model.AvailableSelectStatus)
+                                                        {
+                                                            if (status == "Select Status")
+                                                            {
+                                                        <option class="selectedstatus" selected>Select Status</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option class="selectedstatus">@status</option>
+                                                            }
+                                                        }
+                                                </select>
+                                     
+                                     </div>
+                                    <div class="col-xxl-12">
+                                                    <button class="btn mb-2 mt-2 p-4 pt-4 pb-4 gameinfo1addgame pRightSide fw-bolder fs-5" type="submit">ADD GAME </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                                }
+                    </div>
+                   </div>      
+                </div>
+                }
+                <div class=" gameinfo2 mt-1 p-1">
+                    <h1 class="text-center fw-bold fs-5 p-1 m-1 mt-2 gameinfo1h1">Other Ratings</h1>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+                        <p class="pLeftSide ">IGDB Rating:</p>
+                        @if (item.Rating != null)
+                        {
+
+                            <h1 class="ratinguserlistIGDB pRightSide mx-auto p-3 text-center">@String.Format("{0:0}", item.Rating)</h1>
+
+                        }
+                        else
+                        {
+
+                            <h1 class="ratinguserlistnaIGDB pRightSide mx-auto p-3 text-center">N/A</h1>
+
+                        }
+                        <hr class="pHrLine" style="background-color:#272727;">
+                        <p class="pLeftSide">Critic Rating:</p>
+                        @if (item.AggregatedRating != null)
+                        {
+
+                            <h1 class="ratinguserlistIGDB pRightSide mx-auto p-3 text-center">@String.Format("{0:0}", item.AggregatedRating)</h1>
+
+                        }
+                        else
+                        {
+
+                            <h1 class="ratinguserlistnaIGDB pRightSide mx-auto p-3 text-center">N/A</h1>
+                        }
+                    </div>
+                </div>
+                <div class=" gameinfo2 mt-1 p-1">
+
+                    <h1 class="text-center fw-bold fs-5 p-1 m-1 mb-0 mt-2 gameinfo1h1">Companies <span class="fs-6 fw-light">(clickable)</span></h1>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+
+                <p class="pLeftSide">Developers:</p>
+                <ul class=" pRightSide">
+
+
+                    @if (item.InvolvedCompanies != null)
+                    {
+
+                        bool developerPrinted = false;
+                        @foreach (var company2 in item.InvolvedCompanies.Values)
+                        {
+                            if (company2.Developer == true)
+                            {
+
+                                <a asp-controller="Game" asp-action="CompanyInfo" asp-route-Id="@company2.Company.Value.Id" style="text-decoration:none;" aria-labelledby="person1">
+                                <li class="gameinfo1menubuttons p-1" style="list-style-type:none;">@company2.Company.Value.Name</li>
+                                </a>
+                                developerPrinted = true;
+                            }
+                        }
+                        @if (!developerPrinted)
+                        {
+                            <li style="list-style-type:  none;" class="text-warning">Unknown</li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li style="list-style-type:  none;">No info</li>
+
+                    }
+
+                </ul>
+                <hr class="pHrLine">
+                <p class="pLeftSide">Publishers:</p>
+                <ul class=" pRightSide">
+
+
+
+                    @if (item.InvolvedCompanies != null)
+                    {
+
+                        bool companyPrinted = false;
+
+                        @foreach (var company2 in item.InvolvedCompanies.Values)
+                        {
+                            if (company2.Publisher == true)
+                            {
+                                <a asp-controller="Game" asp-action="CompanyInfo" asp-route-Id="@company2.Company.Value.Id" style="text-decoration:none;" aria-labelledby="person1">
+                                <li class="gameinfo1menubuttons p-1" style="list-style-type:none; ">@company2.Company.Value.Name</li>
+                                </a>
+                                companyPrinted = true;
+                            }
+                        }
+                        @if (!companyPrinted)
+                        {
+                            <li style="list-style-type:  none;" class="text-warning">Unknown</li>
+                        }
+                    }
+                    else
+                    {
+                        <li style="list-style-type:  none;">No info</li>
+
+                    }
+                </ul>
+                </div>
+                </div>
+                <div class=" gameinfo2 mt-1 p-1">
+                 <h1 class="text-center fw-bold fs-5 p-1 m-1 mt-2 gameinfo1h1">Age Ratings</h1>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+
+                        @if (item.AgeRatings != null)
+                        {
+
+                            @foreach (var agerating in item.AgeRatings.Values)
+                            {
+
+
+                                <div class="row p-1">
+                                    <div class="col-4 text-start" style="min-width: 60px;">
+                                        <p>@agerating.Category</p>
+                                    </div>
+                                    <div class="col-8 text-middle">
+
+                                        <p>@agerating.Rating</p>
+                                    </div>
+                                </div>
+                                <hr class="pHrLine">
+                            }
+                        }
+                        else
+                        {
+                            <p class="">No data</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class=" gameinfo2 gameinfo2h2 p-1">
+                    <h2>@item.Name</h2>
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Description</h4>
+
+                        @if (item.Summary != null)
+                        {
+                        <p>
+                                @item.Summary
+
+                        </p>
+                        }
+                        else{
+                            <p>No description found</p>
+                        }
+                </div>
+                @if (item.Storyline != null)
+                {
+                    <div class=" gameinfo2 gameinfo2p">
+                        <h4>
+                            Story -
+
+                            <a class="btn defaultTextColor gameinfo1p" role="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Show (beware spoilers)
+                            </a>
+                        </h4>
+
+                        <div class="collapse" id="collapseExample">
+                                <p>
+                                    @item.Storyline
+                                </p>
+                        </div>
+                    </div>
+                }
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Images</h4>
+
+                    @if (item.Screenshots != null)
+                    {
+                <div id="carouselExampleIndicators" class="carousel slide gameinfo2 p-3" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 0"></button>
+
+                                @for (int i = 1; i < @item.Screenshots.Values.Count(); i++)
+                                {
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" aria-current="true" aria-label="Slide @i"></button>
+                                }
+                            
+                    </div>
+                    <div class="carousel-inner">
+                        
+                        <div class="carousel-item active">
+                            <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_screenshot_huge/" + @item.Screenshots.Values.FirstOrDefault().ImageId + ".jpg")" class="d-block w-100" alt="...">
+                        </div>
+                        
+                        @foreach (var screenshotItem in @item.Screenshots.Values.Skip(1))
+                        {
+                            <div class="carousel-item">
+                                <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_screenshot_huge/" + @screenshotItem.ImageId + ".jpg")" class="d-block w-100" alt="...">
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                           
+                </div>
+
+                    }
+                    else
+                    {
+                        <p>No screenshots found</p>
+                    }
+                </div>
+                <div class="gameinfo2 gameinfo2p">
+                    <h4>Videos</h4>
+                    @if (item.Videos != null)
+                    {
+                        <div id="video-carousel" class="carousel slide gameinfo2 p-3" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-indicators">
+                                @for (int i = 0; i < item.Videos.Values.Count(); i++)
+                                {
+                                    <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")  p-1 "></button>
+                                }
+                            </div>
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < item.Videos.Values.Count(); i++)
+                                {
+                                    var video = item.Videos.Values.ElementAt(i);
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/@video.VideoId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>No videos found</p>
+                    }
+                </div>
+
+                  <div class=" gameinfo2 gameinfo2p">
+                    <h4>Related content</h4>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-3 ">
+                        <div class="row">
+
+                            @if (item.Dlcs != null)
+                            {
+
+                                <div class="col-xxl-6">
+                                    <p class="gameinfo1p me-5  mt-3 w-25 rounded-pill">DLCs</p>
+                                    <ul class="list-group ">
+                                        @foreach (var dlc in item.Dlcs.Values)
+                                        {
+                                            <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@dlc.Id" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+                                                <div class="image-parent">
+
+                                                        @if (@dlc.Cover == null)
+                                                        {
+                                                        <img src="/img/nocover.png">
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_thumb/" + dlc.Cover.Value.ImageId + ".jpg")" alt=''>
+                                                        }
+                                                </div>
+                                                    @dlc.Name
+                                            </li>
+                                            </a>
+                                        }
+                                    </ul>
+
+                                </div>
+                            }
+                            else
+                            {
+
+
+                                <div class="col-xxl-6">
+                                    <p class="gameinfo1p me-5  mt-3 w-25 rounded-pill">DLCs</p>
+                                    <ul class="list-group ">
+                                        <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+
+                                            No DLCs found
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            }
+
+                            @if (item.Expansions != null)
+                            {
+
+                                <div class="col-xxl-6">
+                                    <p class="gameinfo1p me-5  mt-3 w-25 rounded-pill">Expansions</p>
+                                    <ul class="list-group ">
+                                        @foreach (var expansions in item.Expansions.Values)
+                                        {
+                                            <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@expansions.Id" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+                                                <div class="image-parent">
+
+                                                        @if (@expansions.Cover == null)
+                                                        {
+                                                        <img src="/img/nocover.png">
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_thumb/" + expansions.Cover.Value.ImageId + ".jpg")" alt=''>
+                                                        }
+                                                </div>
+                                                    @expansions.Name
+                                            </li>
+                                            </a>
+                                        }
+                                    </ul>
+
+                                </div>
+                            }
+                            else{
+
+
+                                <div class="col-xxl-6">
+                                    <p class="gameinfo1p me-5  mt-3 w-25 rounded-pill">Expansions</p>
+                                    <ul class="list-group ">
+                                        <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+                                               
+                                                    No expansions found
+                                            </li>
+                                        
+                                    </ul>
+
+                                </div>
+                            }
+
+
+
+                            @if (item.StandaloneExpansions != null)
+                            {
+
+                                <div class="col-xxl-6">
+                                    <p class="gameinfo1p me-5  mt-3 w-50 rounded-pill">Standalone Expansions</p>
+                                    <ul class="list-group ">
+                                        @foreach (var StandaloneExpansions in item.StandaloneExpansions.Values)
+                                        {
+                                            <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@StandaloneExpansions.Id" style="text-decoration: none;">
+                                            <li class="list-group-item  d-flex justify-content-between gameinfo1menubuttons align-items-center rounded-3 pe-5 ps-5 mb-1 ">
+                                                <div class="image-parent">
+
+                                                        @if (@StandaloneExpansions.Cover == null)
+                                                        {
+                                                        <img src="/img/nocover.png">
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_thumb/" + StandaloneExpansions.Cover.Value.ImageId + ".jpg")" alt=''>
+                                                        }
+                                                </div>
+                                                    @StandaloneExpansions.Name
+                                            </li>
+                                            </a>
+                                        }
+                                    </ul>
+
+                                </div>
+                            }
+@*
+                            @if (item.StandaloneExpansions == null & item.Expansions == null & item.Dlcs == null)
+                            {
+                                    <p>No related content</p>
+                            }*@
+
+                        </div>
+
+                    </div>
+                  </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Similar games</h4>
+                    @if (item.SimilarGames != null){
+
+                    <div class="row">
+
+                        @foreach (var SimilarGames in item.SimilarGames.Values)
+                        {
+                                <div class="col-sm " align="center">
+                                <div class="item2">
+                                <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@SimilarGames.Id" style="text-decoration: none;"></a>
+                                            @if (@SimilarGames.Cover == null)
+                                            {
+                                                <img src="/img/nocover.png">
+                                            }
+                                            else
+                                            {
+                                            <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + SimilarGames.Cover.Value.ImageId + ".jpg")" alt=''>
+                                            }
+                                     <div class="item__overlay2">
+                                        <h3 id="person1" aria-hidden="true">@SimilarGames.Name</h3>
+                                         <div class="item__body2">
+                                             <p>More info <i class="fa fa-arrow-right" aria-hidden="true"></i></p>
+                                             <hr>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                                        
+                        }
+
+                    </div>
+                    
+                    }
+                    else{
+                        <p>No similar games found</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+

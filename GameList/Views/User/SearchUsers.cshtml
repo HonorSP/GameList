@@ -1,0 +1,101 @@
+﻿@using System.Web
+@using GameList.ViewModels;
+@model SearchUsersViewModel
+@{
+    ViewData["Title"] = "Search Users";
+}
+
+<div class="container-fluid px-4">
+    <div class="row gx-1 justify-content-center">
+        <div class="col-md-12">
+            <div class=" gameinfo2 gamelistEditUserGameList p-1">
+                <h2 class="fw-light"> Users</h2>
+            </div>
+            <form class="d-flex flex-grow-1" method="get" asp-action="SearchUsers" asp-controller="User">
+                @if (Model.SearchQuery != null)
+                {
+                    <input class="form-control editUserGameListsearchbar border-0 w-100 fs-5" type="text" placeholder="Search..." aria-label="Search" name="searchquery" value="@Model.SearchQuery">
+                }
+                else
+                {
+
+                    <input class="form-control editUserGameListsearchbar border-0 w-100 fs-5" type="text" placeholder="Search..." aria-label="Search" name="searchquery">
+                }
+                <button class="btn btn-outline-dark  p-0 pe-2 ps-2 rounded-0 editUserGameListsearchbar gameinfo1 w-100" style="max-width:70px;margin-left:1px;" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+
+            <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                <div style=" margin-top:2px;" class="defaultBgColor">
+                    <div class="row d-flex justify-content-center p-5" >
+
+                        @foreach (var user in Model.Users)
+                        {
+                            <div class="col-sm " align="center">
+                                <div class="item3 text-start">
+                                    <a asp-controller="User" asp-action="UserProfile" asp-route-UserName="@user.UserName" aria-labelledby="person1"></a>
+                                    <img class="img3" src="@user.ProfilePictureUrl" alt=''>
+                                    <div class="item__overlay3">
+                                        <h3 id="person1" aria-hidden="true">@String.Format("@{0}", @user.UserName)</h3>
+                                        <p id="person1" aria-hidden="true" class="text-center">@user.DisplayName</p>
+                                        <div class="item__body3 text-center">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            
+
+                    </div>
+                </div>
+            </div>
+             <div class=" gameinfo2 gamelistEditUserGameListEnd p-1 mt-1">
+            </div>
+
+             @if (Model.TotalPages > 1)
+            {
+
+
+
+                <nav aria-label="Page navigation rounded-left">
+                    <ul class="pagination pagination-lg  flex-wrap justify-content-center mt-5 ">
+
+                        <li class="page-item" >
+                            <a class="page-link gameinfo1menubuttons gameinfoleftpagination rounded-0 border-0  " asp-action="SearchUsers" asp-route-searchquery="@Model.SearchQuery" asp-route-page="1" aria-label="First">
+                                <span aria-hidden="true">First</span>
+                            </a>
+                        </li>
+                        <li class="page-item @(Model.Page == 1 ? "disabled " : "")">
+                            <a class="page-link gameinfo1menubuttons rounded-0 border-0  " asp-action="SearchUsers" asp-route-searchquery="@Model.SearchQuery" asp-route-page="@(Model.Page - 1 > 0 ? Model.Page - 1 : 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.Page ? "active" : "")">
+                                <a class="page-link gameinfo1menubuttons rounded-0 border-0 " asp-action="SearchUsers" asp-route-searchquery="@Model.SearchQuery" asp-route-page="@i">@i</a>
+                            </li>
+                        }
+                        <li class="page-item  @(Model.Page == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link gameinfo1menubuttons rounded-0 border-0 " asp-action="SearchUsers" asp-route-searchquery="@Model.SearchQuery" asp-route-page="@(Model.Page + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link gameinfo1menubuttons gameinforightpagination rounded-0 border-0 " asp-action="SearchUsers" asp-route-searchquery="@Model.SearchQuery" asp-route-page="@Model.TotalPages" aria-label="Last">
+                            <span aria-hidden="true">Last</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            }
+        </div>
+
+    </div>
+
+
+
+
+</div>
+

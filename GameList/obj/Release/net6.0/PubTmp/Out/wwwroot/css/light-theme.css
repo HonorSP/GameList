@@ -1,0 +1,701 @@
+
+body {
+    background-color: #eaeaea;
+}
+
+footer {
+    color: black;
+    background-color: #EFEFEF;
+}
+
+
+.navbar {
+    background-color: #C8C8C8;
+}
+
+
+
+
+.active a {
+    background-color: #C8C8C8 !important;
+}
+
+
+
+
+/*Game cards*/
+.item {
+    border-color: #C8C8C8;
+}
+
+
+    .item h3 {
+        background-color: #EAEAEA;
+        color: black;
+    }
+
+    .item a {
+        color: black;
+    }
+
+.item__overlay {
+    background-color: #DADADA;
+    color: black;
+}
+
+.item2 {
+    border-color: #F5F5F5;
+}
+
+    .item2 h3 {
+        background-color: #EAEAEA;
+        color: black;
+    }
+
+    .item2 a {
+        color: black;
+    }
+
+.item__overlay2 {
+    background-color: #DADADA;
+    color: black;
+}
+
+
+
+.item3 {
+    border-color: #C8C8C8;
+}
+
+    .item3 h3 {
+        background-color: #EAEAEA;
+        color: black;
+    }
+
+    .item3 p {
+        background-color: #EAEAEA;
+        color: black;
+    }
+
+    .item3 a {
+        color: black;
+    }
+
+.item__overlay3 {
+    background-color: #DADADA;
+    color: black;
+}
+
+
+.scoresinner {
+    background-color: #C8C8C8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gameinfo1 {
+    background-color: #C8C8C8;
+}
+
+
+.gameinfo1h1 {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+.gameinfo1p {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+
+/*Used in navigation bar*/
+
+.gameinfo1psearch {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+    .gameinfo1psearch:hover {
+        background-color: #CACACA;
+        color: #3D3D3D;
+    }
+
+.gameinfo1psearchbar {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+.gameinfo1ptype {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+.gameinfo1plogout {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+.gameinfo1limenu {
+    background-color: #CACACA;
+    color: #3D3D3D;
+}
+
+    .gameinfo1limenu:hover {
+        background-color: #B5B5B5;
+        color: #3D3D3D;
+    }
+
+.gameinfo1limenuactive {
+    background-color: #4a4a4a;
+    color: #d3d3d3;
+}
+
+    .gameinfo1limenuactive:hover {
+        background-color: #B5B5B5;
+        color: #3D3D3D;
+    }
+
+.gameinfo1menubuttons {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+    .gameinfo1menubuttons:hover {
+        background-color: #E2E2E2;
+        color: #3D3D3D;
+    }
+
+
+.gameinfo1menubuttonsmain {
+    background-color: #F5F5F5;
+    color: #d3d3d3;
+}
+
+    .gameinfo1menubuttonsmain:hover {
+        background-color: #CACACA;
+        color: #ffffff;
+    }
+
+
+
+/*Used for game search {*/
+
+.gameinfo3 {
+    background-color: #C8C8C8;
+}
+
+
+/*Follow button*/
+
+.followButton {
+    background-color: #73B0BE;
+    color: #2a8196;
+}
+
+    .followButton:hover {
+        background-color: #518D9B;
+        color: #07333D;
+    }
+
+.unfollowButton {
+    background-color: #CB9D9D;
+    color: #7C0000;
+}
+
+    .unfollowButton:hover {
+        background-color: #B06A6A;
+        color: #540000;
+    }
+.logOutButton {
+    background-color: #CB9D9D;
+    color: #7C0000;
+}
+
+    .logOutButton:hover {
+        background-color: #B06A6A;
+        color: #540000;
+    }
+
+.messageButton {
+    background-color: #9EB69E;
+    color: #2a9647;
+}
+
+    .messageButton:hover {
+        background-color: #557355;
+        color: #38bd5b;
+    }
+
+
+
+
+/*END*/
+
+
+.gameinfo2 {
+    background-color: #C8C8C8;
+    color: black;
+}
+
+
+
+
+
+/*Search filter */
+
+
+.gameinfo1searchfilter {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+    .gameinfo1searchfilter.search-query {
+        background-color: #F5F5F5;
+        color: #3D3D3D;
+        border-color: black;
+    }
+
+
+.pHrLine {
+    background-color: #797979;
+}
+
+
+/*
+Rating select form input gameinfo view*/
+
+
+.gameinfo1selectrating {
+    background-color: #CACACA;
+    color: #A98504;
+
+}
+
+
+    .gameinfo1selectrating:hover {
+        background-color: #B5B5B5;
+        color: #A98504;
+    }
+
+
+.selectedrating {
+    color: #644F00;
+    background-color: #B5B5B5;
+}
+
+
+
+
+
+.gameinfo1limenu {
+    background-color: #CACACA;
+    color: #3D3D3D;
+}
+
+    .gameinfo1limenu:hover {
+        background-color: #B5B5B5;
+        color: #3D3D3D;
+    }
+
+
+
+
+
+
+
+
+
+
+
+.gameinfo1selectstatus {
+    background-color: #CACACA;
+    color: #104F44;
+
+}
+
+    .gameinfo1selectstatus:hover {
+        background-color: #B5B5B5;
+        color: #104F44;
+    }
+
+
+.selectedstatus {
+    background-color: #B5B5B5;
+    color: #104F44;
+}
+
+
+.gameinfo1addgame {
+    background-color: #747474;
+    color: #F5F5F5;
+    border-color: #b6b6b6;
+}
+
+    .gameinfo1addgame:hover {
+        background-color: #484848;
+        color: #d1d1d1;
+    }
+
+
+
+/*EditUserGameList css*/
+
+
+.editUserGameListsearchbar {
+    background-color: #C8C8C8;
+    color: #3D3D3D;
+}
+
+
+/*GameInfoRatings*/
+
+
+.ratinguserlist {
+    background-color: #38352a;
+    color: #f2cb3f;
+    border-color: #c2a43b;
+}
+
+.ratinguserlistratings {
+    background-color: #211f18;
+    color: #3D3D3D;
+    border-color: #c2a43b;
+}
+
+.ratinguserlistnaratings {
+    background-color: #D29F9F;
+    color: #3D3D3D;
+}
+
+.ratinguserlistna {
+    background-color: #E8C2C2;
+    color: #f23f3f;
+}
+
+.ratinguserlist dropped {
+    background-color: #CACACA;
+    color: #f2cb3f;
+    border-color: #c2a43b;
+}
+
+
+
+.ratinguserlistIGDB {
+    background-color: #CEC49D;
+    color: #5A4C17;
+    border-color: #c2a43b;
+}
+
+.ratinguserlistnaIGDB {
+    background-color: #E8C2C2;
+    color: #f23f3f;
+}
+
+
+
+
+
+
+
+
+
+
+/*USer Profile css*/
+
+.userporfilestatusna {
+    background-color: #E4E4E4;
+    color: #3D3D3D;
+}
+
+    .userporfilestatusna:hover {
+        background-color: #D0D0D0;
+        color: #3D3D3D;
+    }
+
+.userporfilestatusnanumber {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+
+.userporfilestatusplaying {
+    background-color: #AAD49F;
+    color: #1C7707;
+}
+
+    .userporfilestatusplaying:hover {
+        background-color: #70A462;
+        color: #124306;
+    }
+
+
+.userporfilestatusdropped {
+    background-color: #D19696;
+    color: #910E0E;
+}
+
+    .userporfilestatusdropped:hover {
+        background-color: #AA5C5C;
+        color: #680404;
+    }
+
+
+.userporfilestatuscompleted {
+    background-color: #8699C6;
+    color: #032C91;
+}
+
+    .userporfilestatuscompleted:hover {
+        background-color: #5B71A5;
+        color: #072265;
+    }
+
+
+.userporfilestatusplantoplay {
+    background-color: #4b4b4b;
+    color: #DFDFDF;
+}
+
+    .userporfilestatusplantoplay:hover {
+        background-color: #2B2B2B;
+        color: #F6F6F6;
+    }
+
+
+.userporfilestatusonhold {
+    background-color: #CFC598;
+    color: #9C7B0D;
+}
+
+    .userporfilestatusonhold:hover {
+        background-color: #A09048;
+        color: #6C5402;
+    }
+
+
+.mygamelistuserprofile {
+    background-color: #F5F5F5;
+    color: #3D3D3D;
+}
+
+    .mygamelistuserprofile:hover {
+        background-color: #D5D5D5;
+        color: #3D3D3D;
+    }
+
+.mygamelistuserprofileedit {
+    background-color: #D5D5D5;
+    color: #3D3D3D;
+}
+
+    .mygamelistuserprofileedit:hover {
+        background-color: #B5B5B5;
+        color: #3D3D3D;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Career ===== */
+.career-form {
+    background-color: #4e63d7;
+}
+
+    .career-form .form-control {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+        .career-form .form-control::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #fff;
+        }
+
+        .career-form .form-control::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #fff;
+        }
+
+        .career-form .form-control:-ms-input-placeholder {
+            /* IE 10+ */
+            color: #fff;
+        }
+
+        .career-form .form-control:-moz-placeholder {
+            /* Firefox 18- */
+            color: #fff;
+        }
+
+    .career-form .custom-select {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+
+    .career-form .select-container:before {
+        color: #ffffff;
+    }
+
+.job-box .img-holder {
+    background-color: #4e63d7;
+    color: #fff;
+}
+
+.career-title {
+    background-color: #4e63d7;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#cookieConsentdiv {
+    background-color: rgb(29, 29, 29);
+    color: #3D3D3D;
+}
+
+    #cookieConsentdiv button {
+        background-color: #CACACA;
+        color: #2bc37d;
+    }
+
+        #cookieConsentdiv button:hover {
+            background-color: #182c22;
+        }
+
+
+    #cookieConsentdiv a {
+        color: gray;
+    }
+
+
+
+
+
+
+
+
+
+
+/*    Allmessages page*/
+
+.sendmessage {
+    background-color: #91C5D0;
+    color: #333333;
+}
+
+.replymessage {
+    background-color: #C2DACD;
+    color: #333333;
+}
+
+.defaultTextColor {
+    color: #3D3d3d !important;
+}
+
+.defaultBgColor {
+    background-color: #E2E2E2 !important;
+}
+
+.defaultBgColorDark {
+    background-color: #C8C8C8 !important;
+}

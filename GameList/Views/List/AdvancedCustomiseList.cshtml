@@ -1,0 +1,136 @@
+﻿@using System.Web
+@using GameList.ViewModels
+@model AdvancedCustomiseListViewModel
+<div class="container-fluid px-4">
+    <div class="row gx-1 justify-content-center">
+        <div class="col-md-12">
+            <div class=" gameinfo2 gamelistEditUserGameList p-1">
+                <h2 class="fw-light"> <span class="fw-normal">Customisation</span></h2>
+            </div>
+            <form asp-action="AdvancedCustomiseList" method="post" role="form">
+                 <div class="row gx-0 justify-content-center d-flex align-items-center  ">
+                         <div style=" margin-top:2px;" class="defaultBgColorDark">
+                             <div class="row   p-5 defaultTextColor">
+                                 <div class="col-sm-3 p-0" align="center">
+                                     <div class="m-1">
+                                         <div class="mb-md-5 mt-md-4 pb-5">
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorBody" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorBody" class="form-label">(1) Background Colour</label>
+
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorDisplay" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorDisplay" class="form-label">(2) Header Background Colour</label>
+
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="FontColorDisplayName" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="FontColorDisplayName" class="form-label">(3) Font colour of display name</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorGameListLogo" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorGameListLogo" class="form-label">(4) Background Colour of GameList Logo</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorStatusButtonActive" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorStatusButtonActive" class="form-label">(5) Background colour of chosen status button</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorStatusButton" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorStatusButton" class="form-label">(6) Background colour of status buttons</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="FontColorStatusButton" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="FontColorStatusButton" class="form-label">(7) Font colour of status buttons text</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorStatus" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorStatus" class="form-label">(8) Background colour of status bar</label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             <div class="col-sm-6 p-0 d-none d-lg-block " align="center">
+
+                                 <div class="m-1">
+
+                                     <img src="~/img/advancedcustomlist.jpg">
+
+                                 </div>
+
+                             </div>
+                             <div class="col-sm-6 p-0 pb-3  d-lg-none" align="center">
+
+                                 <div class="m-1">
+
+                                         <img src="~/img/advancedcustomlistmobile.jpg">
+
+                                 </div>
+
+                             </div>
+                             <div class="col-sm-3 p-0" align="center">
+                                 <div class="m-1">
+                                         <div class="mb-md-5 mt-md-4 pb-5">
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorSearch" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorSearch" class="form-label">(9) Background colour of search bar</label>
+
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="FontColorSearch" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="FontColorSearch" class="form-label">(10) Font colour of search text</label>
+
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorTable" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorTable" class="form-label">(11) Background colour of table bar</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="FontColorTable" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="FontColorTable" class="form-label">(12) Font colour of table bar</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorGameTile" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorGameTile" class="form-label">(13) Background colour of game bar</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorGamename" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorGamename" class="form-label">(14) Background colour of game name</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="FontColorGamename" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="FontColorGamename" class="form-label">(15) Font colour of game name</label>
+                                             </div>
+                                             <div class="form-outline form-white mb-1">
+                                                 <input asp-for="BgColorFooter" type="color" class="form-control gameinfo1searchfilter gameinfo1 form-control-lg" />
+                                                 <label asp-for="BgColorFooter" class="form-label">(16) Background colour of footer</label>
+                                             </div>
+                                         </div>
+                                 </div>
+                             </div>
+
+                         </div>
+
+                         <div class="card-body text-center ">
+
+                           <button class="btn gameinfo1menubuttons btn-lg px-5 text-success" type="submit">Save</button><br>
+                           <a class="btn unfollowButton mt-2" asp-area="" asp-controller="List" asp-action="AdvancedResetDefault">Reset to Default</a>
+                         </div>
+                          <br>
+                          <span asp-validation-for="BgColorBody" class="text-danger"></span>
+
+                     </div>
+                     <div class=" gameinfo2 gamelistEditUserGameListEnd p-1" style="margin-top:2px;">
+                         <div class="card-body text-center ">
+
+                                 <a class="btn gameinfo1menubuttons" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserName="@Model.UserName">Back to profile</a>
+                             <a class="btn followButton " asp-area="" asp-controller="List" asp-action="CustomiseList">Customisation</a>
+                         </div>
+                     </div>
+                 </div>
+
+            </form>
+        </div>
+    </div>
+</div>

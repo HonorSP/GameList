@@ -1,0 +1,142 @@
+﻿@using System.Text.RegularExpressions
+@model  IEnumerable<IGDB.Models.Character>
+
+@foreach (var item in Model)
+{
+    <div class="container-fluid px-4">
+        <div class="row gx-1">
+            <div class="col-md-3 ">
+                <div class="gameinfo1 p-1 ">
+                    @if (@item.MugShot == null)
+                    {
+
+                        <img src="/img/nocover.png">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + @item.MugShot.Value.ImageId + ".jpg")">
+                    }
+                    <h1 class="text-center fw-bold fs-5 p-1 m-1 mt-2 gameinfo1h1">Character Information</h1>
+                    <div class="text-center fw-bold fs-7 p-1 m-1 mt-1 gameinfo1p">
+                         <p class="pLeftSide">Name:</p>
+                            <p class="pRightSide">@item.Name</p>
+                        <hr class="pHrLine"> 
+
+                        <p class="pLeftSide">Country of origin:</p>
+                        @if (item.CountryName != null)
+                        {
+                            <p class="pRightSide">@item.CountryName</p>
+                        }
+                        else
+                        {
+
+                            <p class="pRightSide">No data</p>
+                        }
+                        <hr class="pHrLine"> 
+
+                        
+                        <p class="pLeftSide">Gender:</p>
+                        @if (item.Gender != null)
+                        {
+                            @if (item.Gender.Value.ToString() == "0")
+                            {
+                                <p class="pRightSide">Male</p>
+                            }
+                            else if (item.Gender.Value.ToString() == "1")
+                            {
+                                <p class="pRightSide">Female</p>
+                            }
+                            else if (item.Gender.Value.ToString() == "2")
+                            {
+                                <p class="pRightSide">Other</p>
+                            }
+                            else{
+                                
+                                <p class="pRightSide">No data</p>
+                            }
+                        }
+                        else
+                        {
+
+                            <p class="pRightSide">No data</p>
+                        }
+                        <hr class="pHrLine"> 
+
+
+
+                        
+                        <p class="pLeftSide">Species:</p>
+                        @if (item.Species != null)
+                        {
+                            <p class="pRightSide">@item.Species.Value</p>
+                        }
+                        else
+                        {
+                            <p class="pRightSide">No data</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class=" gameinfo2 gameinfo2h2 p-1">
+                    <h2>@item.Name</h2>
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Description</h4>
+
+                        @if (item.Description != null)
+                        {
+                        <p>
+                                @item.Description
+
+                        </p>
+                        }
+                        else{
+                            <p>No description found</p>
+                        }
+                </div>
+                <div class=" gameinfo2 gameinfo2p">
+                    <h4>Games</h4>
+                    @if (item.Games != null)
+                    {
+
+                    <div class="row">
+
+                        @foreach (var games in item.Games.Values)
+                        {
+                                <div class="col-sm " align="center">
+                                <div class="item2">
+                                        <a asp-controller="Game" asp-action="GameInfo" asp-route-Id="@games.Id" style="text-decoration: none;"></a>
+                                            @if (@games.Cover == null)
+                                            {
+                                                <img src="/img/nocover.png">
+                                            }
+                                            else
+                                            {
+                                            <img src="@Url.Content("https://images.igdb.com/igdb/image/upload/t_cover_big/" + games.Cover.Value.ImageId + ".jpg")" alt=''>
+                                            }
+                                     <div class="item__overlay2">
+                                        <h3 id="person1" aria-hidden="true">@games.Name</h3>
+                                         <div class="item__body2">
+                                             <p>More info <i class="fa fa-arrow-right" aria-hidden="true"></i></p>
+                                             <hr>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                                        
+                        }
+
+                    </div>
+                    
+                    }
+                    else{
+                        <p>No games found</p>
+                    }
+
+                </div>
+
+                </div>
+        </div>
+    </div>
+}
